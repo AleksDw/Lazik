@@ -78,7 +78,8 @@ void App::set_up_opengl()
     glUseProgram(shader);
 	unsigned int projLocation = glGetUniformLocation(shader, "projection");
 	glm::mat4 projection = glm::perspective(
-		45.0f, 640.0f / 480.0f, 0.1f, 50.0f);
+									// render distance
+		45.0f, 640.0f / 480.0f, 0.1f, 200.0f);
 	glUniformMatrix4fv(projLocation, 1, GL_FALSE, glm::value_ptr(projection));
 }
 
