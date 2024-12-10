@@ -19,7 +19,7 @@ public:
 
     void make_cube(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
 
-    void make_rover(glm::vec3 position, glm::vec3 eulers);
+    unsigned int make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
 
 	void make_terrain(glm::vec3 position, glm::vec3 eulers);
 

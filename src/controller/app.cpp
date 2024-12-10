@@ -9,6 +9,7 @@ App::~App()
 {
     glDeleteProgram(shader);
 
+	delete roverSystem;
     delete motionSystem;
     delete cameraSystem;
     delete renderSystem;
@@ -24,6 +25,8 @@ void App::run()
 
         motionSystem->update(
             transformComponents, physicsComponents, 16.67f/1000.0f);
+		roverSystem->update(
+			physicsComponents, 16.67f / 1000.0f, roverID);
         bool should_close = cameraSystem->update(
             transformComponents, cameraID, *cameraComponent, 16.67f/1000.0f);
 		if (should_close) 
@@ -85,6 +88,7 @@ void App::set_up_opengl()
 
 void App::make_systems() 
 {
+	roverSystem = new RoverSystem(window);
     motionSystem = new MotionSystem();
     cameraSystem = new CameraSystem(shader, window);
     renderSystem = new RenderSystem(shader, window);

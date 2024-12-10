@@ -9,6 +9,7 @@
 #include "../systems/camera_system.h"
 #include "../systems/motion_system.h"
 #include "../systems/render_system.h"
+#include "../systems/rover_system.h"
 
 #include "../view/shader.h"
 
@@ -26,6 +27,7 @@ public:
     std::unordered_map<unsigned int, PhysicsComponent> physicsComponents;
     CameraComponent* cameraComponent;
     unsigned int cameraID;
+    unsigned int roverID;
     std::unordered_map<unsigned int, RenderComponent> renderComponents;
     
 private:
@@ -36,6 +38,7 @@ private:
     unsigned int shader;
 
     //Systems
+	RoverSystem* roverSystem;
     MotionSystem* motionSystem;
     CameraSystem* cameraSystem;
     RenderSystem* renderSystem;

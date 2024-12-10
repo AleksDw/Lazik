@@ -49,12 +49,17 @@ void Factory::make_cube(glm::vec3 position, glm::vec3 eulers,
     renderComponents[entities_made++] = render;
 }
 
-void Factory::make_rover(glm::vec3 position, glm::vec3 eulers)
+unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity)
 {
     TransformComponent transform;
     transform.position = position;
     transform.eulers = eulers;
     transformComponents[entities_made] = transform;
+
+    PhysicsComponent physics;
+    physics.velocity = { 0.0f, 0.0f, 0.0f };
+    physics.eulerVelocity = eulerVelocity;
+    physicsComponents[entities_made] = physics;
 
     glm::mat4 preTransform = glm::mat4(1.0f);
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
@@ -62,7 +67,8 @@ void Factory::make_rover(glm::vec3 position, glm::vec3 eulers)
 
     RenderComponent render = make_obj_mesh("../../../models/Rover_test_with_wheels.obj", preTransform);
     render.material = make_texture("../../../img/metal_roughness.jpg");
-    renderComponents[entities_made++] = render;
+    renderComponents[entities_made] = render;
+	return entities_made++;
 }
 
 void Factory::make_terrain(glm::vec3 position, glm::vec3 eulers)

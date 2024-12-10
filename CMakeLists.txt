@@ -19,7 +19,7 @@ add_executable(hello_window
     src/systems/render_system.cpp
     src/view/shader.cpp
     src/controller/app.cpp
-)
+ "src/systems/rover_system.cpp" "src/systems/rover_system.h")
 
 target_include_directories(hello_window 
     PRIVATE
