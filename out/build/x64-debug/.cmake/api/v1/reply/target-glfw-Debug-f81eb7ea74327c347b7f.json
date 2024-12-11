@@ -141,15 +141,15 @@
 			[
 				{
 					"backtrace" : 7,
-					"path" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/dependencies/glfw/include"
+					"path" : "D:/Lazik/dependencies/glfw/include"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/dependencies/glfw/src"
+					"path" : "D:/Lazik/dependencies/glfw/src"
 				},
 				{
 					"backtrace" : 8,
-					"path" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/build/x64-debug/dependencies/glfw/src"
+					"path" : "D:/Lazik/out/build/x64-debug/dependencies/glfw/src"
 				}
 			],
 			"language" : "C",
@@ -203,7 +203,7 @@
 		],
 		"prefix" : 
 		{
-			"path" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/install/x64-debug"
+			"path" : "D:/Lazik/out/install/x64-debug"
 		}
 	},
 	"name" : "glfw",

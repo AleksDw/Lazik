@@ -113,14 +113,14 @@
 				{
 					"directoryIndex" : 2,
 					"id" : "glfw::@e43ad0a4af27ecc346ee",
-					"jsonFile" : "target-glfw-Debug-046740c055c4109f070b.json",
+					"jsonFile" : "target-glfw-Debug-f81eb7ea74327c347b7f.json",
 					"name" : "glfw",
 					"projectIndex" : 1
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "hello_window::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-hello_window-Debug-1bf700ed9572406a2cff.json",
+					"jsonFile" : "target-hello_window-Debug-9d9801e482d4e731b83b.json",
 					"name" : "hello_window",
 					"projectIndex" : 0
 				},
@@ -144,8 +144,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/build/x64-debug",
-		"source" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik"
+		"build" : "D:/Lazik/out/build/x64-debug",
+		"source" : "D:/Lazik"
 	},
 	"version" : 
 	{

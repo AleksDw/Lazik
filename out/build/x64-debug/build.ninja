@@ -39,7 +39,7 @@ include CMakeFiles\rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\
+cmake_ninja_workdir = D$:\Lazik\out\build\x64-debug\
 # =============================================================================
 # Object build statements for EXECUTABLE target hello_window
 
@@ -49,73 +49,73 @@ cmake_ninja_workdir = C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\
 
 build cmake_object_order_depends_target_hello_window: phony || cmake_object_order_depends_target_glfw
 
-build CMakeFiles\hello_window.dir\src\config.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\src\config.cpp || cmake_object_order_depends_target_hello_window
+build CMakeFiles\hello_window.dir\src\config.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug D$:\Lazik\src\config.cpp || cmake_object_order_depends_target_hello_window
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include
+  INCLUDES = -ID:\Lazik\dependencies -ID:\Lazik\dependencies\glfw\include
   OBJECT_DIR = CMakeFiles\hello_window.dir
   OBJECT_FILE_DIR = CMakeFiles\hello_window.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\hello_window.dir\
   TARGET_PDB = hello_window.pdb
 
-build CMakeFiles\hello_window.dir\src\main.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\src\main.cpp || cmake_object_order_depends_target_hello_window
+build CMakeFiles\hello_window.dir\src\main.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug D$:\Lazik\src\main.cpp || cmake_object_order_depends_target_hello_window
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include
+  INCLUDES = -ID:\Lazik\dependencies -ID:\Lazik\dependencies\glfw\include
   OBJECT_DIR = CMakeFiles\hello_window.dir
   OBJECT_FILE_DIR = CMakeFiles\hello_window.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\hello_window.dir\
   TARGET_PDB = hello_window.pdb
 
-build CMakeFiles\hello_window.dir\src\glad.c.obj: C_COMPILER__hello_window_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\src\glad.c || cmake_object_order_depends_target_hello_window
+build CMakeFiles\hello_window.dir\src\glad.c.obj: C_COMPILER__hello_window_unscanned_Debug D$:\Lazik\src\glad.c || cmake_object_order_depends_target_hello_window
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include
+  INCLUDES = -ID:\Lazik\dependencies -ID:\Lazik\dependencies\glfw\include
   OBJECT_DIR = CMakeFiles\hello_window.dir
   OBJECT_FILE_DIR = CMakeFiles\hello_window.dir\src
   TARGET_COMPILE_PDB = CMakeFiles\hello_window.dir\
   TARGET_PDB = hello_window.pdb
 
-build CMakeFiles\hello_window.dir\src\factories\factory.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\src\factories\factory.cpp || cmake_object_order_depends_target_hello_window
+build CMakeFiles\hello_window.dir\src\factories\factory.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug D$:\Lazik\src\factories\factory.cpp || cmake_object_order_depends_target_hello_window
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include
+  INCLUDES = -ID:\Lazik\dependencies -ID:\Lazik\dependencies\glfw\include
   OBJECT_DIR = CMakeFiles\hello_window.dir
   OBJECT_FILE_DIR = CMakeFiles\hello_window.dir\src\factories
   TARGET_COMPILE_PDB = CMakeFiles\hello_window.dir\
   TARGET_PDB = hello_window.pdb
 
-build CMakeFiles\hello_window.dir\src\systems\camera_system.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\src\systems\camera_system.cpp || cmake_object_order_depends_target_hello_window
+build CMakeFiles\hello_window.dir\src\systems\camera_system.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug D$:\Lazik\src\systems\camera_system.cpp || cmake_object_order_depends_target_hello_window
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include
+  INCLUDES = -ID:\Lazik\dependencies -ID:\Lazik\dependencies\glfw\include
   OBJECT_DIR = CMakeFiles\hello_window.dir
   OBJECT_FILE_DIR = CMakeFiles\hello_window.dir\src\systems
   TARGET_COMPILE_PDB = CMakeFiles\hello_window.dir\
   TARGET_PDB = hello_window.pdb
 
-build CMakeFiles\hello_window.dir\src\systems\motion_system.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\src\systems\motion_system.cpp || cmake_object_order_depends_target_hello_window
+build CMakeFiles\hello_window.dir\src\systems\motion_system.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug D$:\Lazik\src\systems\motion_system.cpp || cmake_object_order_depends_target_hello_window
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include
+  INCLUDES = -ID:\Lazik\dependencies -ID:\Lazik\dependencies\glfw\include
   OBJECT_DIR = CMakeFiles\hello_window.dir
   OBJECT_FILE_DIR = CMakeFiles\hello_window.dir\src\systems
   TARGET_COMPILE_PDB = CMakeFiles\hello_window.dir\
   TARGET_PDB = hello_window.pdb
 
-build CMakeFiles\hello_window.dir\src\systems\render_system.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\src\systems\render_system.cpp || cmake_object_order_depends_target_hello_window
+build CMakeFiles\hello_window.dir\src\systems\render_system.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug D$:\Lazik\src\systems\render_system.cpp || cmake_object_order_depends_target_hello_window
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include
+  INCLUDES = -ID:\Lazik\dependencies -ID:\Lazik\dependencies\glfw\include
   OBJECT_DIR = CMakeFiles\hello_window.dir
   OBJECT_FILE_DIR = CMakeFiles\hello_window.dir\src\systems
   TARGET_COMPILE_PDB = CMakeFiles\hello_window.dir\
   TARGET_PDB = hello_window.pdb
 
-build CMakeFiles\hello_window.dir\src\view\shader.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\src\view\shader.cpp || cmake_object_order_depends_target_hello_window
+build CMakeFiles\hello_window.dir\src\view\shader.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug D$:\Lazik\src\view\shader.cpp || cmake_object_order_depends_target_hello_window
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include
+  INCLUDES = -ID:\Lazik\dependencies -ID:\Lazik\dependencies\glfw\include
   OBJECT_DIR = CMakeFiles\hello_window.dir
   OBJECT_FILE_DIR = CMakeFiles\hello_window.dir\src\view
   TARGET_COMPILE_PDB = CMakeFiles\hello_window.dir\
   TARGET_PDB = hello_window.pdb
 
-build CMakeFiles\hello_window.dir\src\controller\app.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\src\controller\app.cpp || cmake_object_order_depends_target_hello_window
+build CMakeFiles\hello_window.dir\src\controller\app.cpp.obj: CXX_COMPILER__hello_window_unscanned_Debug D$:\Lazik\src\controller\app.cpp || cmake_object_order_depends_target_hello_window
   FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 -std:c++20
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include
+  INCLUDES = -ID:\Lazik\dependencies -ID:\Lazik\dependencies\glfw\include
   OBJECT_DIR = CMakeFiles\hello_window.dir
   OBJECT_FILE_DIR = CMakeFiles\hello_window.dir\src\controller
   TARGET_COMPILE_PDB = CMakeFiles\hello_window.dir\
@@ -146,7 +146,7 @@ build hello_window.exe: CXX_EXECUTABLE_LINKER__hello_window_Debug CMakeFiles\hel
 # Utility command for edit_cache
 
 build CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -157,7 +157,7 @@ build edit_cache: phony CMakeFiles\edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik -BC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe --regenerate-during-build -SD:\Lazik -BD:\Lazik\out\build\x64-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -175,7 +175,7 @@ build list_install_components: phony
 # Utility command for install
 
 build CMakeFiles\install.util: CUSTOM_COMMAND all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -187,7 +187,7 @@ build install: phony CMakeFiles\install.util
 # Utility command for install/local
 
 build CMakeFiles\install\local.util: CUSTOM_COMMAND all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -196,7 +196,7 @@ build install\local: phony CMakeFiles\install\local.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/CMakeLists.txt
+# D:/Lazik/CMakeLists.txt
 # =============================================================================
 
 
@@ -210,7 +210,7 @@ build dependencies\glfw\uninstall: phony dependencies\glfw\CMakeFiles\uninstall
 # Utility command for edit_cache
 
 build dependencies\glfw\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -221,7 +221,7 @@ build dependencies\glfw\edit_cache: phony dependencies\glfw\CMakeFiles\edit_cach
 # Utility command for rebuild_cache
 
 build dependencies\glfw\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik -BC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe --regenerate-during-build -SD:\Lazik -BD:\Lazik\out\build\x64-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -239,7 +239,7 @@ build dependencies\glfw\list_install_components: phony
 # Utility command for install
 
 build dependencies\glfw\CMakeFiles\install.util: CUSTOM_COMMAND dependencies\glfw\all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -251,7 +251,7 @@ build dependencies\glfw\install: phony dependencies\glfw\CMakeFiles\install.util
 # Utility command for install/local
 
 build dependencies\glfw\CMakeFiles\install\local.util: CUSTOM_COMMAND dependencies\glfw\all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -263,11 +263,11 @@ build dependencies\glfw\install\local: phony dependencies\glfw\CMakeFiles\instal
 # Custom command for dependencies\glfw\CMakeFiles\uninstall
 
 build dependencies\glfw\CMakeFiles\uninstall | ${cmake_ninja_workdir}dependencies\glfw\CMakeFiles\uninstall: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/build/x64-debug/dependencies/glfw/cmake_uninstall.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -P D:/Lazik/out/build/x64-debug/dependencies/glfw/cmake_uninstall.cmake"
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/dependencies/glfw/CMakeLists.txt
+# D:/Lazik/dependencies/glfw/CMakeLists.txt
 # =============================================================================
 
 # =============================================================================
@@ -279,190 +279,190 @@ build dependencies\glfw\CMakeFiles\uninstall | ${cmake_ninja_workdir}dependencie
 
 build cmake_object_order_depends_target_glfw: phony || .
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\context.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\context.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\init.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\init.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\init.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\input.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\input.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\input.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\input.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\monitor.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\monitor.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\platform.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\platform.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\platform.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\platform.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\vulkan.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\vulkan.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\vulkan.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\vulkan.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\window.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\window.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\window.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\egl_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\egl_context.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\egl_context.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\egl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\osmesa_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\osmesa_context.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\osmesa_context.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\osmesa_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\null_init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\null_init.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\null_init.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\null_init.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\null_monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\null_monitor.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\null_monitor.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\null_monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\null_window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\null_window.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\null_window.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\null_window.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\null_joystick.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\null_joystick.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\null_joystick.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\null_joystick.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_module.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\win32_module.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_module.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\win32_module.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_time.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\win32_time.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_time.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\win32_time.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_thread.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\win32_thread.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_thread.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\win32_thread.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_init.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\win32_init.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_init.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\win32_init.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_joystick.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\win32_joystick.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_joystick.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\win32_joystick.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_monitor.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\win32_monitor.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_monitor.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\win32_monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_window.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\win32_window.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\win32_window.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\win32_window.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
   TARGET_PDB = dependencies\glfw\src\glfw3.pdb
 
-build dependencies\glfw\src\CMakeFiles\glfw.dir\wgl_context.c.obj: C_COMPILER__glfw_unscanned_Debug C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\wgl_context.c || cmake_object_order_depends_target_glfw
+build dependencies\glfw\src\CMakeFiles\glfw.dir\wgl_context.c.obj: C_COMPILER__glfw_unscanned_Debug D$:\Lazik\dependencies\glfw\src\wgl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -D_CRT_SECURE_NO_WARNINGS -D_GLFW_WIN32 -D_UNICODE
   FLAGS = /DWIN32 /D_WINDOWS /W3 /MDd /Zi /Ob0 /Od /RTC1 /W3
-  INCLUDES = -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\include -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src -IC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src
+  INCLUDES = -ID:\Lazik\dependencies\glfw\include -ID:\Lazik\dependencies\glfw\src -ID:\Lazik\out\build\x64-debug\dependencies\glfw\src
   OBJECT_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = dependencies\glfw\src\CMakeFiles\glfw.dir
   TARGET_COMPILE_PDB = dependencies\glfw\src\CMakeFiles\glfw.dir\glfw.pdb
@@ -497,7 +497,7 @@ build dependencies\glfw\src\update_mappings: phony dependencies\glfw\src\CMakeFi
 # Utility command for edit_cache
 
 build dependencies\glfw\src\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw\src && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -508,7 +508,7 @@ build dependencies\glfw\src\edit_cache: phony dependencies\glfw\src\CMakeFiles\e
 # Utility command for rebuild_cache
 
 build dependencies\glfw\src\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik -BC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw\src && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe --regenerate-during-build -SD:\Lazik -BD:\Lazik\out\build\x64-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -526,7 +526,7 @@ build dependencies\glfw\src\list_install_components: phony
 # Utility command for install
 
 build dependencies\glfw\src\CMakeFiles\install.util: CUSTOM_COMMAND dependencies\glfw\src\all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw\src && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -538,7 +538,7 @@ build dependencies\glfw\src\install: phony dependencies\glfw\src\CMakeFiles\inst
 # Utility command for install/local
 
 build dependencies\glfw\src\CMakeFiles\install\local.util: CUSTOM_COMMAND dependencies\glfw\src\all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw\src && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -550,12 +550,12 @@ build dependencies\glfw\src\install\local: phony dependencies\glfw\src\CMakeFile
 # Custom command for dependencies\glfw\src\CMakeFiles\update_mappings
 
 build dependencies\glfw\src\CMakeFiles\update_mappings | ${cmake_ninja_workdir}dependencies\glfw\src\CMakeFiles\update_mappings: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/dependencies/glfw/CMake/GenerateMappings.cmake mappings.h.in mappings.h"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\dependencies\glfw\src && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -P D:/Lazik/dependencies/glfw/CMake/GenerateMappings.cmake mappings.h.in mappings.h"
   DESC = Updating gamepad mappings from upstream repository
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
-# C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/dependencies/glfw/CMakeLists.txt
+# D:/Lazik/dependencies/glfw/CMakeLists.txt
 # =============================================================================
 
 
@@ -563,7 +563,7 @@ build dependencies\glfw\src\CMakeFiles\update_mappings | ${cmake_ninja_workdir}d
 # Utility command for edit_cache
 
 build dependencies\glfw\docs\CMakeFiles\edit_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\docs && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -E echo "No interactive CMake dialog available.""
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw\docs && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -E echo "No interactive CMake dialog available.""
   DESC = No interactive CMake dialog available...
   restat = 1
 
@@ -574,7 +574,7 @@ build dependencies\glfw\docs\edit_cache: phony dependencies\glfw\docs\CMakeFiles
 # Utility command for rebuild_cache
 
 build dependencies\glfw\docs\CMakeFiles\rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\docs && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" --regenerate-during-build -SC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik -BC:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw\docs && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe --regenerate-during-build -SD:\Lazik -BD:\Lazik\out\build\x64-debug"
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -592,7 +592,7 @@ build dependencies\glfw\docs\list_install_components: phony
 # Utility command for install
 
 build dependencies\glfw\docs\CMakeFiles\install.util: CUSTOM_COMMAND dependencies\glfw\docs\all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\docs && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw\docs && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -P cmake_install.cmake"
   DESC = Install the project...
   pool = console
   restat = 1
@@ -604,7 +604,7 @@ build dependencies\glfw\docs\install: phony dependencies\glfw\docs\CMakeFiles\in
 # Utility command for install/local
 
 build dependencies\glfw\docs\CMakeFiles\install\local.util: CUSTOM_COMMAND dependencies\glfw\docs\all
-  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D C:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\out\build\x64-debug\dependencies\glfw\docs && "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  COMMAND = C:\Windows\system32\cmd.exe /C "cd /D D:\Lazik\out\build\x64-debug\dependencies\glfw\docs && D:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
   DESC = Installing only the local directory...
   pool = console
   restat = 1
@@ -630,28 +630,28 @@ build update_mappings: phony dependencies\glfw\src\update_mappings
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/build/x64-debug
+# Folder: D:/Lazik/out/build/x64-debug
 
 build all: phony hello_window.exe
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/build/x64-debug/dependencies/glfw
+# Folder: D:/Lazik/out/build/x64-debug/dependencies/glfw
 
 build dependencies\glfw\all: phony dependencies\glfw\src\all dependencies\glfw\docs\all
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/build/x64-debug/dependencies/glfw/docs
+# Folder: D:/Lazik/out/build/x64-debug/dependencies/glfw/docs
 
 build dependencies\glfw\docs\all: phony
 
 # =============================================================================
 
 #############################################
-# Folder: C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/build/x64-debug/dependencies/glfw/src
+# Folder: D:/Lazik/out/build/x64-debug/dependencies/glfw/src
 
 build dependencies\glfw\src\all: phony dependencies\glfw\src\glfw3.lib
 
@@ -662,14 +662,14 @@ build dependencies\glfw\src\all: phony dependencies\glfw\src\glfw3.lib
 #############################################
 # Re-run CMake if any of its inputs changed.
 
-build build.ninja: RERUN_CMAKE | C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CheckCSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CheckIncludeFile.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CheckLibraryExists.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindDoxygen.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindOpenGL.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindThreads.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\GNUInstallDirs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Internal\CheckSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\WriteBasicConfigVersionFile.cmake C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\CMakeLists.txt C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\CMakeLists.txt C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\CMake\cmake_uninstall.cmake.in C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\CMake\glfw3.pc.in C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\CMake\glfw3Config.cmake.in C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\docs\CMakeLists.txt C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\CMakeLists.txt CMakeCache.txt CMakeFiles\3.29.5-msvc4\CMakeCCompiler.cmake CMakeFiles\3.29.5-msvc4\CMakeCXXCompiler.cmake CMakeFiles\3.29.5-msvc4\CMakeRCCompiler.cmake CMakeFiles\3.29.5-msvc4\CMakeSystem.cmake
+build build.ninja: RERUN_CMAKE | CMakeCache.txt CMakeFiles\3.29.5-msvc4\CMakeCCompiler.cmake CMakeFiles\3.29.5-msvc4\CMakeCXXCompiler.cmake CMakeFiles\3.29.5-msvc4\CMakeRCCompiler.cmake CMakeFiles\3.29.5-msvc4\CMakeSystem.cmake D$:\Lazik\CMakeLists.txt D$:\Lazik\dependencies\glfw\CMakeLists.txt D$:\Lazik\dependencies\glfw\CMake\cmake_uninstall.cmake.in D$:\Lazik\dependencies\glfw\CMake\glfw3.pc.in D$:\Lazik\dependencies\glfw\CMake\glfw3Config.cmake.in D$:\Lazik\dependencies\glfw\docs\CMakeLists.txt D$:\Lazik\dependencies\glfw\src\CMakeLists.txt D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\BasicConfigVersion-SameMajorVersion.cmake.in D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCCompiler.cmake.in D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCCompilerABI.c D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCInformation.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCXXCompiler.cmake.in D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCXXCompilerABI.cpp D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCompilerIdDetection.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDependentOption.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineCCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineCXXCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineCompileFeatures.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineCompilerABI.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineCompilerId.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineRCCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineSystem.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeFindBinUtils.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakePackageConfigHelpers.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeParseImplicitIncludeInfo.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeParseImplicitLinkInfo.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeParseLibraryArchitecture.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeRCCompiler.cmake.in D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeSystem.cmake.in D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeTestCCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeTestCXXCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeTestCompilerCommon.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeTestRCCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CheckCSourceCompiles.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CheckIncludeFile.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CheckLibraryExists.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\ADSP-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\ARMCC-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\ARMClang-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\AppleClang-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Borland-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Bruce-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Clang-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Clang-DetermineCompilerInternal.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Compaq-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Cray-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\CrayClang-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Embarcadero-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Fujitsu-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\GHS-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\GNU-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\HP-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\HP-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\IAR-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Intel-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\LCC-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\NVHPC-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\NVIDIA-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\OrangeC-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\PGI-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\PathScale-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\SCO-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\SDCC-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\SunPro-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\TI-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\TIClang-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Tasking-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Watcom-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\XL-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\XL-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\XLClang-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\zOS-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindDoxygen.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindOpenGL.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindThreads.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\GNUInstallDirs.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Internal\CMakeDetermineLinkerId.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Internal\CheckSourceCompiles.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Internal\FeatureTesting.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-Determine-CXX.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\WriteBasicConfigVersionFile.cmake
   pool = console
 
 
 #############################################
 # A missing CMake input file is not an error.
 
-build C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\BasicConfigVersion-SameMajorVersion.cmake.in C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDependentOption.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakePackageConfigHelpers.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CheckCSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CheckIncludeFile.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CheckLibraryExists.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindDoxygen.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindOpenGL.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindThreads.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\GNUInstallDirs.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Internal\CheckSourceCompiles.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake C$:\Program$ Files\Microsoft$ Visual$ Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\WriteBasicConfigVersionFile.cmake C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\CMakeLists.txt C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\CMakeLists.txt C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\CMake\cmake_uninstall.cmake.in C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\CMake\glfw3.pc.in C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\CMake\glfw3Config.cmake.in C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\docs\CMakeLists.txt C$:\Users\aleks\Desktop\Studia\Semestr3\Grafika\Lazik\dependencies\glfw\src\CMakeLists.txt CMakeCache.txt CMakeFiles\3.29.5-msvc4\CMakeCCompiler.cmake CMakeFiles\3.29.5-msvc4\CMakeCXXCompiler.cmake CMakeFiles\3.29.5-msvc4\CMakeRCCompiler.cmake CMakeFiles\3.29.5-msvc4\CMakeSystem.cmake: phony
+build CMakeCache.txt CMakeFiles\3.29.5-msvc4\CMakeCCompiler.cmake CMakeFiles\3.29.5-msvc4\CMakeCXXCompiler.cmake CMakeFiles\3.29.5-msvc4\CMakeRCCompiler.cmake CMakeFiles\3.29.5-msvc4\CMakeSystem.cmake D$:\Lazik\CMakeLists.txt D$:\Lazik\dependencies\glfw\CMakeLists.txt D$:\Lazik\dependencies\glfw\CMake\cmake_uninstall.cmake.in D$:\Lazik\dependencies\glfw\CMake\glfw3.pc.in D$:\Lazik\dependencies\glfw\CMake\glfw3Config.cmake.in D$:\Lazik\dependencies\glfw\docs\CMakeLists.txt D$:\Lazik\dependencies\glfw\src\CMakeLists.txt D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\BasicConfigVersion-SameMajorVersion.cmake.in D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCCompiler.cmake.in D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCCompilerABI.c D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCInformation.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCXXCompiler.cmake.in D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCXXCompilerABI.cpp D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCXXInformation.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCommonLanguageInclude.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeCompilerIdDetection.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDependentOption.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineCCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineCXXCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineCompileFeatures.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineCompilerABI.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineCompilerId.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineRCCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeDetermineSystem.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeFindBinUtils.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeGenericSystem.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeInitializeConfigs.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeLanguageInformation.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakePackageConfigHelpers.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeParseImplicitIncludeInfo.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeParseImplicitLinkInfo.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeParseLibraryArchitecture.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeRCCompiler.cmake.in D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeRCInformation.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeSystem.cmake.in D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInformation.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeSystemSpecificInitialize.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeTestCCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeTestCXXCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeTestCompilerCommon.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CMakeTestRCCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CheckCSourceCompiles.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CheckIncludeFile.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\CheckLibraryExists.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\ADSP-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\ARMCC-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\ARMClang-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\AppleClang-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Borland-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Bruce-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\CMakeCommonCompilerMacros.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Clang-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Clang-DetermineCompilerInternal.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Compaq-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Compaq-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Cray-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\CrayClang-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Embarcadero-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Fujitsu-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\FujitsuClang-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\GHS-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\GNU-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\GNU-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\HP-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\HP-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\IAR-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\IBMCPP-C-DetermineVersionInternal.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\IBMCPP-CXX-DetermineVersionInternal.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\IBMClang-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\IBMClang-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Intel-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\IntelLLVM-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\LCC-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\LCC-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC-C.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC-CXX.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\MSVC.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\NVHPC-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\NVIDIA-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\OpenWatcom-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\OrangeC-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\PGI-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\PathScale-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\SCO-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\SDCC-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\SunPro-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\SunPro-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\TI-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\TIClang-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Tasking-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\TinyCC-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\VisualAge-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\VisualAge-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\Watcom-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\XL-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\XL-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\XLClang-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\XLClang-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\zOS-C-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Compiler\zOS-CXX-DetermineCompiler.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindDoxygen.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindOpenGL.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindPackageHandleStandardArgs.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindPackageMessage.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\FindThreads.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\GNUInstallDirs.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Internal\CMakeDetermineLinkerId.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Internal\CheckSourceCompiles.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Internal\FeatureTesting.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-Determine-CXX.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-Initialize.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-C.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC-CXX.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows-MSVC.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\Windows.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\Platform\WindowsPaths.cmake D$:\VS\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.29\Modules\WriteBasicConfigVersionFile.cmake: phony
 
 
 #############################################

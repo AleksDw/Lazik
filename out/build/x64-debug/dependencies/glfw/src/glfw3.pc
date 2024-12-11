@@ -1,7 +1,7 @@
-prefix=C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/install/x64-debug
+prefix=D:/Lazik/out/install/x64-debug
 exec_prefix=${prefix}
-includedir=C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/install/x64-debug/include
-libdir=C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/install/x64-debug/lib
+includedir=D:/Lazik/out/install/x64-debug/include
+libdir=D:/Lazik/out/install/x64-debug/lib
 
 Name: GLFW
 Description: A multi-platform library for OpenGL, window and input

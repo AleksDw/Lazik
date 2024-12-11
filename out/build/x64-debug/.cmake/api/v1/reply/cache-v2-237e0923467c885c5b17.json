@@ -27,7 +27,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/lib.exe"
+			"value" : "D:/VS/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/lib.exe"
 		},
 		{
 			"name" : "CMAKE_BUILD_TYPE",
@@ -51,7 +51,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/build/x64-debug"
+			"value" : "d:/Lazik/out/build/x64-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -99,7 +99,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe"
+			"value" : "D:/VS/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cmake.exe"
 		},
 		{
 			"name" : "CMAKE_CPACK_COMMAND",
@@ -111,7 +111,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cpack.exe"
+			"value" : "D:/VS/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/cpack.exe"
 		},
 		{
 			"name" : "CMAKE_CTEST_COMMAND",
@@ -123,7 +123,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/ctest.exe"
+			"value" : "D:/VS/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/bin/ctest.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_COMPILER",
@@ -135,11 +135,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
 			"type" : "STRING",
-			"value" : "cl.exe"
+			"value" : "D:/VS/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/cl.exe"
 		},
 		{
 			"name" : "CMAKE_CXX_FLAGS",
@@ -247,11 +247,11 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "C compiler"
 				}
 			],
 			"type" : "STRING",
-			"value" : "cl.exe"
+			"value" : "D:/VS/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/cl.exe"
 		},
 		{
 			"name" : "CMAKE_C_FLAGS",
@@ -479,7 +479,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/build/x64-debug/CMakeFiles/pkgRedirects"
+			"value" : "D:/Lazik/out/build/x64-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -575,7 +575,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik"
+			"value" : "D:/Lazik"
 		},
 		{
 			"name" : "CMAKE_INSTALL_BINDIR",
@@ -779,7 +779,7 @@
 				}
 			],
 			"type" : "PATH",
-			"value" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/install/x64-debug"
+			"value" : "D:/Lazik/out/install/x64-debug"
 		},
 		{
 			"name" : "CMAKE_INSTALL_RUNSTATEDIR",
@@ -859,7 +859,7 @@
 				}
 			],
 			"type" : "FILEPATH",
-			"value" : "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/link.exe"
+			"value" : "D:/VS/VC/Tools/MSVC/14.41.34120/bin/Hostx64/x64/link.exe"
 		},
 		{
 			"name" : "CMAKE_MAKE_PROGRAM",
@@ -867,11 +867,11 @@
 			[
 				{
 					"name" : "HELPSTRING",
-					"value" : "make program"
+					"value" : "No help, variable specified on the command line."
 				}
 			],
-			"type" : "FILEPATH",
-			"value" : "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe"
+			"type" : "UNINITIALIZED",
+			"value" : "D:\\VS\\COMMON7\\IDE\\COMMONEXTENSIONS\\MICROSOFT\\CMAKE\\Ninja\\ninja.exe"
 		},
 		{
 			"name" : "CMAKE_MODULE_LINKER_FLAGS",
@@ -1219,7 +1219,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Program Files/Microsoft Visual Studio/2022/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29"
+			"value" : "D:/VS/Common7/IDE/CommonExtensions/Microsoft/CMake/CMake/share/cmake-3.29"
 		},
 		{
 			"name" : "CMAKE_SHARED_LINKER_FLAGS",
@@ -1479,7 +1479,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/build/x64-debug/dependencies/glfw"
+			"value" : "D:/Lazik/out/build/x64-debug/dependencies/glfw"
 		},
 		{
 			"name" : "GLFW_BUILD_DOCS",
@@ -1599,7 +1599,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/dependencies/glfw"
+			"value" : "D:/Lazik/dependencies/glfw"
 		},
 		{
 			"name" : "GLFW_USE_HYBRID_HPG",
@@ -1667,7 +1667,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/install/x64-debug"
+			"value" : "D:/Lazik/out/install/x64-debug"
 		},
 		{
 			"name" : "hello_window_BINARY_DIR",
@@ -1679,7 +1679,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/build/x64-debug"
+			"value" : "D:/Lazik/out/build/x64-debug"
 		},
 		{
 			"name" : "hello_window_IS_TOP_LEVEL",
@@ -1703,7 +1703,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik"
+			"value" : "D:/Lazik"
 		}
 	],
 	"kind" : "cache",

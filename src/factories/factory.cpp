@@ -60,8 +60,8 @@ void Factory::make_rover(glm::vec3 position, glm::vec3 eulers)
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    RenderComponent render = make_obj_mesh("../../../models/Rover_test_with_wheels.obj", preTransform);
-    render.material = make_texture("../../../img/metal_roughness.jpg");
+    RenderComponent render = make_obj_mesh("../../../models/Rover_with_textures.obj", preTransform);
+    render.material = make_texture("../../../img/Rover_mainbody/Rover_mainbody_Albedo.png");
     renderComponents[entities_made++] = render;
 }
 

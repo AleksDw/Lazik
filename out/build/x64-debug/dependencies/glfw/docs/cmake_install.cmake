@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/dependencies/glfw/docs
+# Install script for directory: D:/Lazik/dependencies/glfw/docs
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Users/aleks/Desktop/Studia/Semestr3/Grafika/Lazik/out/install/x64-debug")
+  set(CMAKE_INSTALL_PREFIX "D:/Lazik/out/install/x64-debug")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
