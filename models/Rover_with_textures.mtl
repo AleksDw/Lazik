@@ -1,0 +1,82 @@
+# Blender 4.3.1 MTL File: 'None'
+# www.blender.org
+
+newmtl Additional_objects
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd additional_objects/additional_objects_Albedo.png
+map_Pm additional_objects/additional_objects_Metalness.png
+map_Pr additional_objects/additional_objects_Roughness.png
+map_Bump -bm 1.000000 additional_objects/additional_objects_Normal.png
+
+newmtl Pipes
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd Pipes/Pipes_Albedo.png
+map_Pm Pipes/Pipes_Metalness.png
+map_Pr Pipes/Pipes_Roughness.png
+map_Bump -bm 1.000000 Pipes/Pipes_Normal.png
+
+newmtl Rover_decals
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd decals/decals_Albedo.png
+map_Pm decals/decals_Metalness.png
+map_Pr decals/decals_Roughness.png
+map_Bump -bm 1.000000 decals/decals_Normal.png
+
+newmtl Rover_mainbody
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd Rover_mainbody/Rover_mainbody_Albedo.png
+map_Pm Rover_mainbody/Rover_mainbody_Metalness.png
+map_Pr Rover_mainbody/Rover_mainbody_Roughness.png
+map_Bump -bm 1.000000 Rover_mainbody/Rover_mainbody_Normal.png
+
+newmtl Wheel
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.500000
+d 1.000000
+illum 2
+Ps 0.000000
+Pc 0.000000
+Pcr 0.030000
+aniso 0.000000
+anisor 0.000000
+map_Kd Wheel/Wheel_Albedo.png
+map_Pm Wheel/Wheel_Metalness.png
+map_Pr Wheel/Wheel_Roughness.png
+map_Bump -bm 1.000000 Wheel/Wheel_Normal.png
