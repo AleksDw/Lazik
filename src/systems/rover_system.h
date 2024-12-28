@@ -9,6 +9,8 @@ public:
 
     RoverSystem(GLFWwindow* window);
 
+    void update(std::unordered_map<unsigned int, TransformComponent>& transformComponents, std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents, float dt, unsigned int controlledEntity);
+
     void update(
         std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents, float dt, unsigned int controlledEntity);
 
