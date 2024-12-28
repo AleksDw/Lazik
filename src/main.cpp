@@ -18,10 +18,10 @@ int main()
 	
 	unsigned int roverEntity = factory->make_rover({ 5.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, {0.0f, 0.0f, 0.0f});
 	app->roverID = roverEntity;
-	factory->make_cube({ 3.0f, 0.0f, 0.25f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
+	//factory->make_cube({ 3.0f, 0.0f, 0.25f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
 
 
-	factory->make_terrain({ 5.0f, 4.0f, 0.0f }, { 0.0f, 0.0f, 180.0f });
+	//factory->make_terrain({ 5.0f, 4.0f, 0.0f }, { 0.0f, 0.0f, 180.0f });
 
 
 	unsigned int cameraEntity = factory->make_camera(

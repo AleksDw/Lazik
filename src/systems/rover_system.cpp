@@ -10,6 +10,10 @@ float maxSpeed = 5.0f;
 float deceleration = 5.0f;
 float turnSpeed = 0.5f;
 float MPI = 3.14159265359;
+const float wheelRadius = 0.5f;
+
+
+bool jedzie;
 
 RoverSystem::RoverSystem(GLFWwindow* window) {
     this->window = window;
@@ -27,6 +31,11 @@ void RoverSystem::update(
         }
         if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
             angle -= turnSpeed * dt;
+        }
+
+        if (controlledEntity == 1 || controlledEntity == 2)
+        {
+            jedzie = true;
         }
     }
     if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
@@ -59,6 +68,13 @@ void RoverSystem::update(
     glm::vec2 direction = glm::rotate(glm::vec2(1.0f, 0.0f), angle);
     physicsComponents[controlledEntity].velocity = glm::vec3(direction.x, direction.y, 0.0f) * speed;
     transformComponents[controlledEntity].eulers.z = angle * (180.0f / MPI);
+    if (jedzie) {
+        // Rotate around x-axis like a spinning wheel
+        float wheelRadius = 0.5f; // Example wheel radius
+        float wheelSpin = 200;
+        transformComponents[controlledEntity].eulers.x += glm::degrees(wheelSpin); // Update wheel rotation
+    }
+    jedzie = false;
 
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
         speed *= 0.95f;

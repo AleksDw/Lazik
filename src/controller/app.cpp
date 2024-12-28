@@ -25,8 +25,12 @@ void App::run()
 
         motionSystem->update(
             transformComponents, physicsComponents, 16.67f/1000.0f);
-		roverSystem->update(
-			transformComponents,physicsComponents, 16.67f / 1000.0f, roverID);
+		for (int i = 0; i <= roverID; i++)
+		{
+			roverSystem->update(
+				transformComponents, physicsComponents, 16.67f / 1000.0f, i);
+		}
+		
         bool should_close = cameraSystem->update(
             transformComponents, cameraID, *cameraComponent, 16.67f/1000.0f);
 		if (should_close) 
