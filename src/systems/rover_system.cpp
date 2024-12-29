@@ -24,6 +24,7 @@ void RoverSystem::update(
     std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents, float dt, unsigned int controlledEntity)
 {
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
+        jedzie = true;
         speed += acceleration * dt;
         if (speed > maxSpeed) speed = maxSpeed;
         if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
@@ -64,18 +65,42 @@ void RoverSystem::update(
             if (speed > 0.0f) speed = 0.0f;
         }
     }
-
     glm::vec2 direction = glm::rotate(glm::vec2(1.0f, 0.0f), angle);
-    physicsComponents[controlledEntity].velocity = glm::vec3(direction.x, direction.y, 0.0f) * speed;
-    transformComponents[controlledEntity].eulers.z = angle * (180.0f / MPI);
-    if (jedzie) {
-        // Rotate around x-axis like a spinning wheel
-        float wheelRadius = 0.5f; // Example wheel radius
-        float wheelSpin = 200;
-        transformComponents[controlledEntity].eulers.x += glm::degrees(wheelSpin); // Update wheel rotation
+    for (int i = 0; i <= controlledEntity; i++) {
+        if (i > 0) {
+            glm::vec3 localOffset;
+            switch (i) {
+            case 1:
+                localOffset = glm::vec3(2, 1.8f, -1.0f);
+                break;
+            case 2:
+                localOffset = glm::vec3(-2, -1.8f, -1.0f);
+                break;
+            case 3:
+                localOffset = glm::vec3(2, -1.8f, -1.0f);
+                break;
+            case 4:
+                localOffset = glm::vec3(-2, 1.8f, -1.0f);
+                break;
+            default:
+                localOffset = glm::vec3(0.0f, 0.0f, 0.0f);
+                break;
+            }
+            glm::vec3 rotatedOffset = glm::rotateZ(localOffset, glm::radians(transformComponents[0].eulers.z));
+            transformComponents[i].position = transformComponents[0].position + rotatedOffset;
+            physicsComponents[i].velocity = physicsComponents[0].velocity;
+            if (jedzie) {
+                float wheelSpinSpeed = 200.0f;
+                transformComponents[i].eulers.x += 10;
+            }
+        }
+        else {
+            physicsComponents[i].velocity = glm::vec3(direction.x, direction.y, 0.0f) * speed;
+        }
+        transformComponents[i].eulers.z = angle * (180.0f / MPI);
     }
+    
     jedzie = false;
-
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
         speed *= 0.95f;
         if (std::abs(speed) < 0.1f) speed = 0.0f;

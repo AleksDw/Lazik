@@ -72,7 +72,9 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
     entities_made++;
     
     // lewy przod
-    transform.position = position;
+    transform.position.x = position.x;
+    transform.position.y = position.y;
+    transform.position.z = position.z;
     transform.eulers = eulers;
     transformComponents[entities_made] = transform;
 
@@ -84,7 +86,7 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    render = make_obj_mesh("../../../models/lewa.obj", preTransform);
+    render = make_obj_mesh("../../../models/lewe-przodnie.obj", preTransform);
     render.material = make_texture("../../../img/Body_BaseColor.png");
     renderComponents[entities_made] = render;
     entities_made++;
@@ -102,12 +104,12 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    render = make_obj_mesh("../../../models/prawa.obj", preTransform);
+    render = make_obj_mesh("../../../models/prawe-przodnie.obj", preTransform);
     render.material = make_texture("../../../img/Body_BaseColor.png");
     renderComponents[entities_made] = render;
     entities_made++;
 
-    // tyl
+    // prawy tyl
     transform.position = position;
     transform.eulers = eulers;
     transformComponents[entities_made] = transform;
@@ -120,7 +122,25 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    render = make_obj_mesh("../../../models/tylnie.obj", preTransform);
+    render = make_obj_mesh("../../../models/prawe-tylnie.obj", preTransform);
+    render.material = make_texture("../../../img/Body_BaseColor.png");
+    renderComponents[entities_made] = render;
+    entities_made++;
+
+    // lewy tyl
+    transform.position = position;
+    transform.eulers = eulers;
+    transformComponents[entities_made] = transform;
+
+    physics.velocity = { 0.0f, 0.0f, 0.0f };
+    physics.eulerVelocity = eulerVelocity;
+    physicsComponents[entities_made] = physics;
+
+    preTransform = glm::mat4(1.0f);
+    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+    render = make_obj_mesh("../../../models/lewe-tylnie.obj", preTransform);
     render.material = make_texture("../../../img/Body_BaseColor.png");
     renderComponents[entities_made] = render;
     entities_made++;
