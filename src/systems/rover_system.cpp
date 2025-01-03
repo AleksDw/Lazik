@@ -90,14 +90,14 @@ void RoverSystem::update(
             transformComponents[i].position = transformComponents[0].position + rotatedOffset;
             physicsComponents[i].velocity = physicsComponents[0].velocity;
             if (jedzie) {
-                float wheelSpinSpeed = 200.0f;
-                transformComponents[i].eulers.x += 10;
+                transformComponents[i].eulers.y += 1;
             }
         }
         else {
             physicsComponents[i].velocity = glm::vec3(direction.x, direction.y, 0.0f) * speed;
         }
         transformComponents[i].eulers.z = angle * (180.0f / MPI);
+        std::cout << transformComponents[i].eulers.y << std::endl;
     }
     
     jedzie = false;
