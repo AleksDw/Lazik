@@ -1,4 +1,4 @@
-#include "factory.h"
+﻿#include "factory.h"
 #include "../stb_image.h"
 
 Factory::Factory(
@@ -71,7 +71,7 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
     renderComponents[entities_made] = render;
     entities_made++;
     
-    // lewy przod
+    // prawy przod
     transform.position.x = position.x;
     transform.position.y = position.y;
     transform.position.z = position.z;
@@ -84,25 +84,7 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
 
     preTransform = glm::mat4(1.0f);
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-
-    render = make_obj_mesh("../../../models/Rover_wheel_right.obj", preTransform);
-    render.material = make_texture("../../../img/Wheel_BaseColor.png");
-    renderComponents[entities_made] = render;
-    entities_made++;
-
-    // prawy przod
-    transform.position = position;
-    transform.eulers = eulers;
-    transformComponents[entities_made] = transform;
-
-    physics.velocity = { 0.0f, 0.0f, 0.0f };
-    physics.eulerVelocity = eulerVelocity;
-    physicsComponents[entities_made] = physics;
-
-    preTransform = glm::mat4(1.0f);
-    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
     render = make_obj_mesh("../../../models/Rover_wheel_right.obj", preTransform);
     render.material = make_texture("../../../img/Wheel_BaseColor.png");
@@ -120,9 +102,27 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
 
     preTransform = glm::mat4(1.0f);
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
     render = make_obj_mesh("../../../models/Rover_wheel_right.obj", preTransform);
+    render.material = make_texture("../../../img/Wheel_BaseColor.png");
+    renderComponents[entities_made] = render;
+    entities_made++;
+
+    // lewo przod
+    transform.position = position;
+    transform.eulers = eulers;
+    transformComponents[entities_made] = transform;
+
+    physics.velocity = { 0.0f, 0.0f, 0.0f };
+    physics.eulerVelocity = eulerVelocity;
+    physicsComponents[entities_made] = physics;
+
+    preTransform = glm::mat4(1.0f);
+    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+    render = make_obj_mesh("../../../models/Rover_wheel.obj", preTransform);
     render.material = make_texture("../../../img/Wheel_BaseColor.png");
     renderComponents[entities_made] = render;
     entities_made++;
@@ -138,9 +138,9 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
 
     preTransform = glm::mat4(1.0f);
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    render = make_obj_mesh("../../../models/Rover_wheel_right.obj", preTransform);
+    render = make_obj_mesh("../../../models/Rover_wheel.obj", preTransform);
     render.material = make_texture("../../../img/Wheel_BaseColor.png");
     renderComponents[entities_made] = render;
     entities_made++;

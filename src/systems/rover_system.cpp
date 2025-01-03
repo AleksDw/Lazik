@@ -10,8 +10,14 @@ float maxSpeed = 5.0f;
 float deceleration = 5.0f;
 float turnSpeed = 0.5f;
 float MPI = 3.14159265359;
+int const PRAWE_KOLO_PRZOD = 1;
+int const PRAWE_KOLO_TYL = 2;
+int const LEWE_KOLO_PRZOD = 3;
+int const LEWE_KOLO_TYL = 4;
+int const LEWO = 1;
+int const PRAWO = 2;
 const float wheelRadius = 0.5f;
-
+int skret = 0;
 RoverSystem::RoverSystem(GLFWwindow* window) {
     this->window = window;
 }
@@ -25,9 +31,11 @@ void RoverSystem::update(
         if (speed > maxSpeed) speed = maxSpeed;
         if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
             angle += turnSpeed * dt;
+            skret = LEWO;
         }
         if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
             angle -= turnSpeed * dt;
+            skret = PRAWO;
         }
     }
     if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
@@ -61,17 +69,17 @@ void RoverSystem::update(
         if (i > 0) {
             glm::vec3 localOffset;
             switch (i) {
-            case 1:
-                localOffset = glm::vec3(5, 5, -1.0f);
-                break;
-            case 2:
+            case PRAWE_KOLO_PRZOD:
                 localOffset = glm::vec3(1.85486f, -0.64958f, -0.686f);
                 break;
-            case 3:
-                localOffset = glm::vec3(5, 5, -1.0f);
+            case PRAWE_KOLO_TYL:
+                localOffset = glm::vec3(-0.65486f, -0.64958f, -0.686f);
                 break;
-            case 4:
-                localOffset = glm::vec3(5, 5, -1.0f);
+            case LEWE_KOLO_PRZOD:
+                localOffset = glm::vec3(1.85486f, 0.64958f, -0.686f);
+                break;
+            case LEWE_KOLO_TYL:
+                localOffset = glm::vec3(-0.65486f, 0.64958f, -0.686f);
                 break;
             default:
                 localOffset = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -87,7 +95,15 @@ void RoverSystem::update(
         else {
             physicsComponents[i].velocity = glm::vec3(direction.x, direction.y, 0.0f) * speed;
         }
-        transformComponents[i].eulers.z = angle * (180.0f / MPI);
+        if (skret == LEWO && (i == PRAWE_KOLO_PRZOD || i == LEWE_KOLO_PRZOD)) {
+            transformComponents[i].eulers.z = angle * (180.0f / MPI) + 20;
+        }
+        else if (skret == PRAWO && (i == PRAWE_KOLO_PRZOD || i == LEWE_KOLO_PRZOD)) {
+            transformComponents[i].eulers.z = angle * (180.0f / MPI) - 20;
+        }
+        else
+            transformComponents[i].eulers.z = angle * (180.0f / MPI);
+
         //std::cout << transformComponents[i].eulers.y << std::endl;
     }
     
