@@ -5,22 +5,18 @@
 glm::vec3 position = { 0.0f, 0.0f, 0.0f };
 float angle = 0.0f;
 float speed = 0.0f;
-float acceleration = 2.0f;
-float maxSpeed = 5.0f;
-float deceleration = 5.0f;
 float turnSpeed = 0.5f;
-float MPI = 3.14159265359;
+float wheelAngle = 0.0f;
+
+const float acceleration = 2.0f;
+const float deceleration = 5.0f;
+const float MPI = 3.14159265359;
 int const PRAWE_KOLO_PRZOD = 1;
 int const PRAWE_KOLO_TYL = 2;
 int const LEWE_KOLO_PRZOD = 3;
 int const LEWE_KOLO_TYL = 4;
-int const LEWO = 1;
-int const PRAWO = 2;
-const float wheelRadius = 0.5f;
-int skret = 0;
-
-const int MAXKATSKRETU = 30;
-int katskretu = 0;
+const float MAX_SPEED = 5.0f;
+const float MAX_WHEEL_ANGLE = 30.0f;
 
 RoverSystem::RoverSystem(GLFWwindow* window) {
     this->window = window;
@@ -30,39 +26,39 @@ void RoverSystem::update(
     std::unordered_map<unsigned int, TransformComponent>& transformComponents,
     std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents, float dt, unsigned int controlledEntity)
 {
+    // sterowanie
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
         speed += acceleration * dt;
-        if (speed > maxSpeed) speed = maxSpeed;
-        if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
-            angle += turnSpeed * dt;
-            //skret = LEWO;
-            katskretu++;
-        }
-        if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
-            angle -= turnSpeed * dt;
-            //skret = PRAWO;
-        }
+        if (speed > MAX_SPEED) speed = MAX_SPEED;
     }
+
     if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
         speed -= acceleration * dt;
-        if (speed < -maxSpeed) speed = -maxSpeed;
-        if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
-            angle += turnSpeed * dt;
-        }
-        if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
-            angle -= turnSpeed * dt;
-        }
+        if (speed < -MAX_SPEED) speed = -MAX_SPEED;
     }
 
-	if (katskretu > MAXKATSKRETU) katskretu = MAXKATSKRETU;
-	if (katskretu < -MAXKATSKRETU) katskretu = -MAXKATSKRETU;
-
-    angle = fmod(angle, 2.0f * MPI);
-    if (angle < 0) {
-        angle += 2.0f * MPI;
+    if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
+        wheelAngle++;
+        if (wheelAngle > MAX_WHEEL_ANGLE) wheelAngle = MAX_WHEEL_ANGLE;
     }
 
-    if (glfwGetKey(window, GLFW_KEY_UP) != GLFW_PRESS && glfwGetKey(window, GLFW_KEY_DOWN) != GLFW_PRESS) {
+    if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
+        wheelAngle--;
+        if (wheelAngle < -MAX_WHEEL_ANGLE) wheelAngle = -MAX_WHEEL_ANGLE;
+    }
+
+	// jezeli nie wcisnieto lub wcisnieto lewego i prawego to kat kola powinien malec
+    if ((glfwGetKey(window, GLFW_KEY_LEFT) != GLFW_PRESS && glfwGetKey(window, GLFW_KEY_RIGHT) != GLFW_PRESS) || 
+        glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
+        if (wheelAngle > 0)
+            wheelAngle--;
+        else if (wheelAngle < 0)
+            wheelAngle++;
+    }
+
+	// jezeli nie wcisnieto lub wcisnieto gory i dolu to predkosc powinna malec
+    if ((glfwGetKey(window, GLFW_KEY_UP) != GLFW_PRESS && glfwGetKey(window, GLFW_KEY_DOWN) != GLFW_PRESS) ||
+        glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS && glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
         if (speed > 0.0f) {
             speed = speed * 0.99;
             if (speed < 0.0f) speed = 0.0f;
@@ -72,6 +68,23 @@ void RoverSystem::update(
             if (speed > 0.0f) speed = 0.0f;
         }
     }
+
+    // obliczanie zmiany kata obrotu lazika
+    if (speed > turnSpeed)
+    {
+        angle += (dt * wheelAngle * turnSpeed)/30;
+    }
+    else
+	{
+        angle += (dt * wheelAngle * speed)/30;
+	}
+
+    angle = fmod(angle, 2.0f * MPI);
+    if (angle < 0) {
+        angle += 2.0f * MPI;
+    }
+
+    
     glm::vec2 direction = glm::rotate(glm::vec2(1.0f, 0.0f), angle);
     for (int i = 0; i <= controlledEntity; i++) {
         if (i > 0) {
@@ -104,7 +117,7 @@ void RoverSystem::update(
             physicsComponents[i].velocity = glm::vec3(direction.x, direction.y, 0.0f) * speed;
         }
         if(i == PRAWE_KOLO_PRZOD || i == LEWE_KOLO_PRZOD)
-			transformComponents[i].eulers.z = angle * (180.0f / MPI) + katskretu;
+			transformComponents[i].eulers.z = angle * (180.0f / MPI) + wheelAngle;
         else
             transformComponents[i].eulers.z = angle * (180.0f / MPI);
 		
