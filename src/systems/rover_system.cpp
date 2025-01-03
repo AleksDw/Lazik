@@ -12,9 +12,6 @@ float turnSpeed = 0.5f;
 float MPI = 3.14159265359;
 const float wheelRadius = 0.5f;
 
-
-bool jedzie;
-
 RoverSystem::RoverSystem(GLFWwindow* window) {
     this->window = window;
 }
@@ -24,7 +21,6 @@ void RoverSystem::update(
     std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents, float dt, unsigned int controlledEntity)
 {
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
-        jedzie = true;
         speed += acceleration * dt;
         if (speed > maxSpeed) speed = maxSpeed;
         if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
@@ -32,11 +28,6 @@ void RoverSystem::update(
         }
         if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
             angle -= turnSpeed * dt;
-        }
-
-        if (controlledEntity == 1 || controlledEntity == 2)
-        {
-            jedzie = true;
         }
     }
     if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
@@ -71,16 +62,16 @@ void RoverSystem::update(
             glm::vec3 localOffset;
             switch (i) {
             case 1:
-                localOffset = glm::vec3(2, 1.8f, -1.0f);
+                localOffset = glm::vec3(5, 5, -1.0f);
                 break;
             case 2:
-                localOffset = glm::vec3(-2, -1.8f, -1.0f);
+                localOffset = glm::vec3(1.85486f, -0.64958f, -0.686f);
                 break;
             case 3:
-                localOffset = glm::vec3(2, -1.8f, -1.0f);
+                localOffset = glm::vec3(5, 5, -1.0f);
                 break;
             case 4:
-                localOffset = glm::vec3(-2, 1.8f, -1.0f);
+                localOffset = glm::vec3(5, 5, -1.0f);
                 break;
             default:
                 localOffset = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -89,18 +80,17 @@ void RoverSystem::update(
             glm::vec3 rotatedOffset = glm::rotateZ(localOffset, glm::radians(transformComponents[0].eulers.z));
             transformComponents[i].position = transformComponents[0].position + rotatedOffset;
             physicsComponents[i].velocity = physicsComponents[0].velocity;
-            if (jedzie) {
-                transformComponents[i].eulers.y += 1;
-            }
+
+            transformComponents[i].eulers.y += speed;
+			if (transformComponents[i].eulers.y > 360.0f) transformComponents[i].eulers.y -= 360.0f;
         }
         else {
             physicsComponents[i].velocity = glm::vec3(direction.x, direction.y, 0.0f) * speed;
         }
         transformComponents[i].eulers.z = angle * (180.0f / MPI);
-        std::cout << transformComponents[i].eulers.y << std::endl;
+        //std::cout << transformComponents[i].eulers.y << std::endl;
     }
     
-    jedzie = false;
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
         speed *= 0.95f;
         if (std::abs(speed) < 0.1f) speed = 0.0f;

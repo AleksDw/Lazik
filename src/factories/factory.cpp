@@ -66,7 +66,7 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    RenderComponent render = make_obj_mesh("../../../models/cialo.obj", preTransform);
+    RenderComponent render = make_obj_mesh("../../../models/Rover_body.obj", preTransform);
     render.material = make_texture("../../../img/Body_BaseColor.png");
     renderComponents[entities_made] = render;
     entities_made++;
@@ -86,8 +86,8 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    render = make_obj_mesh("../../../models/lewe-przodnie.obj", preTransform);
-    render.material = make_texture("../../../img/Body_BaseColor.png");
+    render = make_obj_mesh("../../../models/Rover_wheel_right.obj", preTransform);
+    render.material = make_texture("../../../img/Wheel_BaseColor.png");
     renderComponents[entities_made] = render;
     entities_made++;
 
@@ -104,8 +104,8 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    render = make_obj_mesh("../../../models/prawe-przodnie.obj", preTransform);
-    render.material = make_texture("../../../img/Body_BaseColor.png");
+    render = make_obj_mesh("../../../models/Rover_wheel_right.obj", preTransform);
+    render.material = make_texture("../../../img/Wheel_BaseColor.png");
     renderComponents[entities_made] = render;
     entities_made++;
 
@@ -122,8 +122,8 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    render = make_obj_mesh("../../../models/prawe-tylnie.obj", preTransform);
-    render.material = make_texture("../../../img/Body_BaseColor.png");
+    render = make_obj_mesh("../../../models/Rover_wheel_right.obj", preTransform);
+    render.material = make_texture("../../../img/Wheel_BaseColor.png");
     renderComponents[entities_made] = render;
     entities_made++;
 
@@ -140,8 +140,8 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    render = make_obj_mesh("../../../models/lewe-tylnie.obj", preTransform);
-    render.material = make_texture("../../../img/Body_BaseColor.png");
+    render = make_obj_mesh("../../../models/Rover_wheel_right.obj", preTransform);
+    render.material = make_texture("../../../img/Wheel_BaseColor.png");
     renderComponents[entities_made] = render;
     entities_made++;
 
@@ -157,7 +157,7 @@ void Factory::make_terrain(glm::vec3 position, glm::vec3 eulers)
 
     glm::mat4 preTransform = glm::mat4(1.0f);
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+    preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
     RenderComponent render = make_obj_mesh("../../../models/terrain.obj", preTransform);
     render.material = make_texture("../../../img/metal_albedo.jpg");
