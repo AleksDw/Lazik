@@ -18,6 +18,10 @@ int const LEWO = 1;
 int const PRAWO = 2;
 const float wheelRadius = 0.5f;
 int skret = 0;
+
+const int MAXKATSKRETU = 30;
+int katskretu = 0;
+
 RoverSystem::RoverSystem(GLFWwindow* window) {
     this->window = window;
 }
@@ -31,11 +35,12 @@ void RoverSystem::update(
         if (speed > maxSpeed) speed = maxSpeed;
         if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
             angle += turnSpeed * dt;
-            skret = LEWO;
+            //skret = LEWO;
+            katskretu++;
         }
         if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
             angle -= turnSpeed * dt;
-            skret = PRAWO;
+            //skret = PRAWO;
         }
     }
     if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
@@ -48,6 +53,9 @@ void RoverSystem::update(
             angle -= turnSpeed * dt;
         }
     }
+
+	if (katskretu > MAXKATSKRETU) katskretu = MAXKATSKRETU;
+	if (katskretu < -MAXKATSKRETU) katskretu = -MAXKATSKRETU;
 
     angle = fmod(angle, 2.0f * MPI);
     if (angle < 0) {
@@ -95,15 +103,11 @@ void RoverSystem::update(
         else {
             physicsComponents[i].velocity = glm::vec3(direction.x, direction.y, 0.0f) * speed;
         }
-        if (skret == LEWO && (i == PRAWE_KOLO_PRZOD || i == LEWE_KOLO_PRZOD)) {
-            transformComponents[i].eulers.z = angle * (180.0f / MPI) + 20;
-        }
-        else if (skret == PRAWO && (i == PRAWE_KOLO_PRZOD || i == LEWE_KOLO_PRZOD)) {
-            transformComponents[i].eulers.z = angle * (180.0f / MPI) - 20;
-        }
+        if(i == PRAWE_KOLO_PRZOD || i == LEWE_KOLO_PRZOD)
+			transformComponents[i].eulers.z = angle * (180.0f / MPI) + katskretu;
         else
             transformComponents[i].eulers.z = angle * (180.0f / MPI);
-
+		
         //std::cout << transformComponents[i].eulers.y << std::endl;
     }
     
