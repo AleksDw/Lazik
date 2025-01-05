@@ -4,24 +4,33 @@
 #include "../components/physics_component.h"
 #include "../components/render_component.h"
 #include "../components/transform_component.h"
+#include "../components/transformHitBox_component.h"
+#include "../components/hitBox_component.h"
 
 class Factory {
 
 public:
-    Factory(
-        std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents,
+    Factory(std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents,
         std::unordered_map<unsigned int, RenderComponent>& renderComponents,
-        std::unordered_map<unsigned int, TransformComponent>& transformComponents);
-    
+        std::unordered_map<unsigned int, HitBoxComponent>& renderComponentsHitbox,
+        std::unordered_map<unsigned int, TransformComponent>& transformComponents,
+        std::unordered_map<unsigned int, TransformHitBoxComponent>& transformComponentsHitbox);
+
     ~Factory();
 
     unsigned int make_camera(glm::vec3 position, glm::vec3 eulers);
 
     void make_cube(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
 
+    unsigned int make_ramp(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
+
+    unsigned int make_bum(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
+
     unsigned int make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
 
 	void make_terrain(glm::vec3 position, glm::vec3 eulers);
+
+    HitBoxComponent make_obj_coliderbox(const char* filepath, glm::mat4 preTransform);
 
 private:
 
@@ -29,7 +38,9 @@ private:
 
     std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents;
     std::unordered_map<unsigned int, RenderComponent>& renderComponents;
+    std::unordered_map<unsigned int, HitBoxComponent>& renderComponentsHitbox;
     std::unordered_map<unsigned int, TransformComponent>& transformComponents;
+    std::unordered_map<unsigned int, TransformHitBoxComponent>& transformComponentsHitbox;
 
     std::vector<unsigned int> VAOs;
     std::vector<unsigned int> VBOs;
@@ -47,5 +58,4 @@ private:
     void read_corner(std::string description, 
         std::vector<glm::vec3>& v, std::vector<glm::vec2>& vt, 
         std::vector<glm::vec3>& vn, std::vector<float>& vertices);
-
 };

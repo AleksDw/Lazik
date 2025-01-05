@@ -4,10 +4,16 @@
 Factory::Factory(
     std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents,
     std::unordered_map<unsigned int, RenderComponent>& renderComponents,
-    std::unordered_map<unsigned int, TransformComponent>& transformComponents):
+    std::unordered_map<unsigned int, HitBoxComponent>& renderComponentsHitbox,
+    std::unordered_map<unsigned int, TransformComponent>& transformComponents,
+    std::unordered_map<unsigned int, TransformHitBoxComponent>& transformComponentsHitbox
+    ):
 physicsComponents(physicsComponents),
 renderComponents(renderComponents),
-transformComponents(transformComponents) {
+renderComponentsHitbox(renderComponentsHitbox),
+transformComponents(transformComponents),
+transformComponentsHitbox(transformComponentsHitbox)
+{
 }
 
 Factory::~Factory() {
@@ -48,14 +54,66 @@ void Factory::make_cube(glm::vec3 position, glm::vec3 eulers,
     render.material = make_texture("../../../img/metal_metalness.jpg");
     renderComponents[entities_made++] = render;
 }
+//unsigned int Factory::make_ramp(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity)
+//{
+//    TransformComponent transform;
+//    TransformComponent hitbox;
+//    hitbox.position = position;
+//    hitbox.eulers = eulers;
+//    transform.position = position;
+//    transform.eulers = eulers;
+//    transformComponents[entities_made] = transform;
+//    transformComponentsHitbox[entities_made] = hitbox;
+//
+//    glm::mat4 preTransform = glm::mat4(1.0f);
+//    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+//    preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+//
+//    RenderComponent render = make_obj_mesh("../../../models/Rover_body.obj", preTransform);
+//    RenderComponent renderhitbox = make_obj_mesh("../../../models/hitbox.obj", preTransform);
+//    render.material = make_texture("../../../img/Body_BaseColor.png");
+//    renderhitbox.material = make_texture("../../../img/Body_BaseColor.png");
+//    renderComponents[entities_made] = render;
+//    renderComponentsHitbox[entities_made] = renderhitbox;
+//    entities_made++;
+//}
+
+unsigned int Factory::make_bum(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity)
+{
+    TransformComponent transform;
+    TransformHitBoxComponent hitbox;
+    hitbox.position = position;
+    hitbox.eulers = eulers;
+    transform.position = position;
+    transform.eulers = eulers;
+    transformComponents[entities_made] = transform;
+    transformComponentsHitbox[entities_made] = hitbox;
+
+    glm::mat4 preTransform = glm::mat4(1.0f);
+    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+    RenderComponent render = make_obj_mesh("../../../models/bum.obj", preTransform);
+    HitBoxComponent renderhitbox = make_obj_coliderbox("../../../models/bum.obj", preTransform);
+    render.material = make_texture("../../../img/Body_BaseColor.png");
+    renderComponents[entities_made] = render;
+    renderComponentsHitbox[entities_made] = renderhitbox;
+    
+    return entities_made++;
+}
+
 
 unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity)
 {
     // cialo
     TransformComponent transform;
+    TransformHitBoxComponent hitbox;
+    hitbox.position = position;
+    hitbox.eulers = eulers;
     transform.position = position;
     transform.eulers = eulers;
     transformComponents[entities_made] = transform;
+    transformComponentsHitbox[entities_made] = hitbox;
 
     PhysicsComponent physics;
     physics.velocity = { 0.0f, 0.0f, 0.0f };
@@ -66,9 +124,12 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
     preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
-    RenderComponent render = make_obj_mesh("../../../models/Rover_body.obj", preTransform);
+    RenderComponent render = make_obj_mesh("../../../models/hitbox.obj", preTransform);
+    HitBoxComponent renderhitbox = make_obj_coliderbox("../../../models/hitbox.obj", preTransform);
     render.material = make_texture("../../../img/Body_BaseColor.png");
+
     renderComponents[entities_made] = render;
+    renderComponentsHitbox[entities_made] = renderhitbox;
     entities_made++;
     
     // prawy przod
@@ -105,7 +166,6 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
     preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
     render = make_obj_mesh("../../../models/Rover_wheel_right.obj", preTransform);
-    render.material = make_texture("../../../img/Wheel_BaseColor.png");
     renderComponents[entities_made] = render;
     entities_made++;
 
@@ -162,6 +222,35 @@ void Factory::make_terrain(glm::vec3 position, glm::vec3 eulers)
     RenderComponent render = make_obj_mesh("../../../models/terrain.obj", preTransform);
     render.material = make_texture("../../../img/metal_albedo.jpg");
     renderComponents[entities_made++] = render;
+}
+HitBoxComponent Factory::make_obj_coliderbox(const char* filepath, glm::mat4 preTransform) {
+    std::vector<glm::vec3> v; // Store only vertices
+
+    std::string line;
+    std::vector<std::string> words;
+
+    std::ifstream file(filepath);
+    if (!file.is_open()) {
+        throw std::runtime_error("Failed to open OBJ file: " + std::string(filepath));
+    }
+
+    // Read the OBJ file line by line
+    while (std::getline(file, line)) {
+        words = split(line, " ");
+
+        // Process vertex lines
+        if (!words[0].compare("v")) {
+            v.push_back(read_vec3(words, preTransform, 1.0f));
+        }
+    }
+    file.close();
+
+
+    HitBoxComponent render;
+    render.vertexCount = v.size(); // Number of vertices
+    render.vertices = v; // Assuming RenderComponent has a `vertices` field for debugging
+
+    return render;
 }
 
 

@@ -9,6 +9,7 @@ RenderSystem::RenderSystem(unsigned int shader, GLFWwindow* window)
     
 void RenderSystem::update(
     std::unordered_map<unsigned int,TransformComponent> &transformComponents,
+    std::unordered_map<unsigned int, TransformHitBoxComponent> &transformComponentsHitbox,
     std::unordered_map<unsigned int,RenderComponent> &renderComponents) 
 {
     
@@ -36,6 +37,25 @@ void RenderSystem::update(
         glBindTexture(GL_TEXTURE_2D, renderable.material);
         glBindVertexArray(renderable.VAO);
 	    glDrawArrays(GL_TRIANGLES, 0, renderable.vertexCount);
+    }
+    for (auto& [entity, renderable] : transformComponentsHitbox)
+    {
+
+        TransformHitBoxComponent& transform = transformComponentsHitbox[entity];
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, transform.position);
+        model = glm::rotate(model, glm::radians(transform.eulers.z), { 0.0f, 0.0f, 1.0f });
+        glUniformMatrix4fv(
+            modelLocation, 1, GL_FALSE,
+            glm::value_ptr(model));
+        model = glm::rotate(model, glm::radians(transform.eulers.y), { 0.0f, 1.0f, 0.0f });
+        glUniformMatrix4fv(
+            modelLocation, 1, GL_FALSE,
+            glm::value_ptr(model));
+        model = glm::rotate(model, glm::radians(transform.eulers.x), { 1.0f, 0.0f, 1.0f });
+        glUniformMatrix4fv(
+            modelLocation, 1, GL_FALSE,
+            glm::value_ptr(model));
     }
 	glfwSwapBuffers(window);
 }

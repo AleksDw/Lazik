@@ -7,6 +7,7 @@ float angle = 0.0f;
 float speed = 0.0f;
 float turnSpeed = 0.5f;
 float wheelAngle = 0.0f;
+bool jebna = false;
 
 const float acceleration = 2.0f;
 const float deceleration = 5.0f;
@@ -18,14 +19,23 @@ int const LEWE_KOLO_TYL = 4;
 const float MAX_SPEED = 5.0f;
 const float MAX_WHEEL_ANGLE = 30.0f;
 
+
 RoverSystem::RoverSystem(GLFWwindow* window) {
     this->window = window;
+    tempPositions = {};
 }
 
 void RoverSystem::update(
     std::unordered_map<unsigned int, TransformComponent>& transformComponents,
-    std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents, float dt, unsigned int controlledEntity)
+    std::unordered_map<unsigned int, TransformHitBoxComponent>& transformComponentsHitbox,
+    std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents,
+    std::unordered_map<unsigned int, HitBoxComponent>& HitBoxComponent,
+    float dt, unsigned int controlledEntity)
 {
+    for (int i = 0; i <= controlledEntity; i++) {
+        tempPositions[i] = transformComponents[i];
+    }
+    
     // sterowanie
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
         speed += acceleration * dt;
@@ -106,26 +116,77 @@ void RoverSystem::update(
                 localOffset = glm::vec3(0.0f, 0.0f, 0.0f);
                 break;
             }
-            glm::vec3 rotatedOffset = glm::rotateZ(localOffset, glm::radians(transformComponents[0].eulers.z));
-            transformComponents[i].position = transformComponents[0].position + rotatedOffset;
+            glm::vec3 rotatedOffset = glm::rotateZ(localOffset, glm::radians(tempPositions[0].eulers.z));
+            tempPositions[i].position = tempPositions[0].position + rotatedOffset;
             physicsComponents[i].velocity = physicsComponents[0].velocity;
 
-            transformComponents[i].eulers.y += speed;
-			if (transformComponents[i].eulers.y > 360.0f) transformComponents[i].eulers.y -= 360.0f;
+            tempPositions[i].eulers.y += speed;
+			if (tempPositions[i].eulers.y > 360.0f) tempPositions[i].eulers.y -= 360.0f;
         }
         else {
             physicsComponents[i].velocity = glm::vec3(direction.x, direction.y, 0.0f) * speed;
         }
         if(i == PRAWE_KOLO_PRZOD || i == LEWE_KOLO_PRZOD)
-			transformComponents[i].eulers.z = angle * (180.0f / MPI) + wheelAngle;
-        else
-            transformComponents[i].eulers.z = angle * (180.0f / MPI);
-		
-        //std::cout << transformComponents[i].eulers.y << std::endl;
+            tempPositions[i].eulers.z = angle * (180.0f / MPI) + wheelAngle;
+        else {
+            tempPositions[0].eulers.z = angle * (180.0f / MPI);
+            transformComponentsHitbox[0].eulers.z = angle * (180.0f / MPI);
+            transformComponentsHitbox[0].position = tempPositions[0].position;
+        }
     }
-    
+    for (const auto& [key, hitbox] : HitBoxComponent) {
+        if (key > controlledEntity) {
+        for (const auto& vertex : hitbox.vertices) {
+            if (isPointInsideCube(vertex,HitBoxComponent[0].vertices, transformComponentsHitbox[0].position, transformComponentsHitbox[key].position) != 0) {
+                jebna = true;
+            }
+        }
+        }
+    }
+
+    if (jebna) {
+        for (int i = 0; i <= controlledEntity; i++) {
+            physicsComponents[i].velocity = {0,0,0};
+        }
+        transformComponentsHitbox[0].eulers.z = angle * (180.0f / MPI);
+        transformComponentsHitbox[0].position = transformComponents[0].position;
+    }
+    else {
+        for (int i = 0; i <= controlledEntity; i++) {
+        transformComponents[i] = tempPositions[i];
+        }
+    }
+
+    jebna = false;
+
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
         speed *= 0.95f;
         if (std::abs(speed) < 0.1f) speed = 0.0f;
     }
 }
+
+int RoverSystem::isPointInsideCube(const glm::vec3& point, const std::vector<glm::vec3>& vertices, const glm::vec3& positionRover, const glm::vec3& positionPoint) {
+    float minX = std::min({ vertices[0].x + positionRover.x, vertices[1].x + positionRover.x, vertices[2].x + positionRover.x, vertices[3].x + positionRover.x,
+                           vertices[4].x + positionRover.x, vertices[5].x + positionRover.x, vertices[6].x + positionRover.x, vertices[7].x + positionRover.x });
+    float maxX = std::max({ vertices[0].x + positionRover.x, vertices[1].x + positionRover.x, vertices[2].x + positionRover.x, vertices[3].x + positionRover.x,
+                           vertices[4].x + positionRover.x, vertices[5].x + positionRover.x, vertices[6].x + positionRover.x, vertices[7].x + positionRover.x });
+
+    float minY = std::min({ vertices[0].y + positionRover.y, vertices[1].y + positionRover.y, vertices[2].y + positionRover.y, vertices[3].y + positionRover.y,
+                           vertices[4].y + positionRover.y, vertices[5].y + positionRover.y, vertices[6].y + positionRover.y, vertices[7].y + positionRover.y });
+    float maxY = std::max({ vertices[0].y + positionRover.y, vertices[1].y + positionRover.y, vertices[2].y + positionRover.y, vertices[3].y + positionRover.y,
+                           vertices[4].y + positionRover.y, vertices[5].y + positionRover.y, vertices[6].y + positionRover.y, vertices[7].y + positionRover.y });
+
+    float minZ = std::min({ vertices[0].z + positionRover.z, vertices[1].z + positionRover.z, vertices[2].z + positionRover.z, vertices[3].z + positionRover.z,
+                           vertices[4].z + positionRover.z, vertices[5].z + positionRover.z, vertices[6].z + positionRover.z, vertices[7].z + positionRover.z });
+    float maxZ = std::max({ vertices[0].z + positionRover.z, vertices[1].z + positionRover.z, vertices[2].z + positionRover.z, vertices[3].z + positionRover.z,
+                           vertices[4].z + positionRover.z, vertices[5].z + positionRover.z, vertices[6].z + positionRover.z, vertices[7].z + positionRover.z });
+
+    if (point.x + positionPoint.x >= minX && point.x + positionPoint.x <= maxX &&
+        point.y + positionPoint.y >= minY && point.y + positionPoint.y <= maxY &&
+        point.z + positionPoint.z >= minZ && point.z + positionPoint.z <= maxZ)
+    {
+        return 1;
+    }
+    return 0;
+}
+
