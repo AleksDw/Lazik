@@ -133,6 +133,12 @@ void RoverSystem::update(
             transformComponentsHitbox[0].eulers.z = angle * (180.0f / MPI);
             transformComponentsHitbox[0].position = tempPositions[0].position;
         }
+        tempPositions[i].position += physicsComponents[i].velocity * dt;
+        tempPositions[i].eulers += physicsComponents[i].eulerVelocity * dt;
+        if (transformComponents[i].eulers.z > 360)
+        {
+            transformComponents[i].eulers.z -= 360;
+        }
     }
     for (const auto& [key, hitbox] : HitBoxComponent) {
         if (key > controlledEntity) {
