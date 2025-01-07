@@ -29,7 +29,7 @@ void RoverSystem::update(
     std::unordered_map<unsigned int, TransformComponent>& transformComponents,
     std::unordered_map<unsigned int, TransformHitBoxComponent>& transformComponentsHitbox,
     std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents,
-    std::unordered_map<unsigned int, HitBoxComponent>& HitBoxComponent,
+    std::unordered_map<unsigned int, HitBoxComponent>& hitBoxComponent,
     float dt, unsigned int controlledEntity)
 {
     for (int i = 0; i <= controlledEntity; i++) {
@@ -129,7 +129,7 @@ void RoverSystem::update(
         if(i == PRAWE_KOLO_PRZOD || i == LEWE_KOLO_PRZOD)
             tempPositions[i].eulers.z = angle * (180.0f / MPI) + wheelAngle;
         else {
-            tempPositions[0].eulers.z = angle * (180.0f / MPI);
+            tempPositions[i].eulers.z = angle * (180.0f / MPI);
             transformComponentsHitbox[0].eulers.z = angle * (180.0f / MPI);
             transformComponentsHitbox[0].position = tempPositions[0].position;
         }
@@ -140,10 +140,10 @@ void RoverSystem::update(
             transformComponents[i].eulers.z -= 360;
         }
     }
-    for (const auto& [key, hitbox] : HitBoxComponent) {
+    for (const auto& [key, hitbox] : hitBoxComponent) {
         if (key > controlledEntity) {
         for (const auto& vertex : hitbox.vertices) {
-            if (isPointInsideCube(vertex,HitBoxComponent[0].vertices, transformComponentsHitbox[0].position, transformComponentsHitbox[key].position) != 0) {
+            if (isPointInsideCube(vertex,hitBoxComponent[0].vertices, transformComponentsHitbox[0].position, transformComponentsHitbox[key].position, transformComponentsHitbox[0].eulers) != 0) {
                 jebna = true;
             }
         }
@@ -171,25 +171,44 @@ void RoverSystem::update(
     }
 }
 
-int RoverSystem::isPointInsideCube(const glm::vec3& point, const std::vector<glm::vec3>& vertices, const glm::vec3& positionRover, const glm::vec3& positionPoint) {
-    float minX = std::min({ vertices[0].x + positionRover.x, vertices[1].x + positionRover.x, vertices[2].x + positionRover.x, vertices[3].x + positionRover.x,
-                           vertices[4].x + positionRover.x, vertices[5].x + positionRover.x, vertices[6].x + positionRover.x, vertices[7].x + positionRover.x });
-    float maxX = std::max({ vertices[0].x + positionRover.x, vertices[1].x + positionRover.x, vertices[2].x + positionRover.x, vertices[3].x + positionRover.x,
-                           vertices[4].x + positionRover.x, vertices[5].x + positionRover.x, vertices[6].x + positionRover.x, vertices[7].x + positionRover.x });
+int RoverSystem::isPointInsideCube(const glm::vec3& point, const std::vector<glm::vec3>& vertices, const glm::vec3& positionRover, const glm::vec3& positionPoint, const glm::vec3& eulersRover) {
 
-    float minY = std::min({ vertices[0].y + positionRover.y, vertices[1].y + positionRover.y, vertices[2].y + positionRover.y, vertices[3].y + positionRover.y,
-                           vertices[4].y + positionRover.y, vertices[5].y + positionRover.y, vertices[6].y + positionRover.y, vertices[7].y + positionRover.y });
-    float maxY = std::max({ vertices[0].y + positionRover.y, vertices[1].y + positionRover.y, vertices[2].y + positionRover.y, vertices[3].y + positionRover.y,
-                           vertices[4].y + positionRover.y, vertices[5].y + positionRover.y, vertices[6].y + positionRover.y, vertices[7].y + positionRover.y });
+    glm::mat4 rotationMatrix = glm::mat4(1.0f);
+    rotationMatrix = glm::rotate(rotationMatrix, glm::radians(eulersRover.x), glm::vec3(1, 0, 0));
+    rotationMatrix = glm::rotate(rotationMatrix, glm::radians(eulersRover.y), glm::vec3(0, 1, 0));
+    rotationMatrix = glm::rotate(rotationMatrix, glm::radians(eulersRover.z), glm::vec3(0, 0, 1));
 
-    float minZ = std::min({ vertices[0].z + positionRover.z, vertices[1].z + positionRover.z, vertices[2].z + positionRover.z, vertices[3].z + positionRover.z,
-                           vertices[4].z + positionRover.z, vertices[5].z + positionRover.z, vertices[6].z + positionRover.z, vertices[7].z + positionRover.z });
-    float maxZ = std::max({ vertices[0].z + positionRover.z, vertices[1].z + positionRover.z, vertices[2].z + positionRover.z, vertices[3].z + positionRover.z,
-                           vertices[4].z + positionRover.z, vertices[5].z + positionRover.z, vertices[6].z + positionRover.z, vertices[7].z + positionRover.z });
+    std::vector<glm::vec3> transformedVertices;
+	for (const auto& vertex : vertices) {
+		glm::vec4 transformedVertex = rotationMatrix * glm::vec4(vertex, 1.0f);
+		transformedVertices.push_back(glm::vec3(transformedVertex) + positionRover);
+	}
 
-    if (point.x + positionPoint.x >= minX && point.x + positionPoint.x <= maxX &&
-        point.y + positionPoint.y >= minY && point.y + positionPoint.y <= maxY &&
-        point.z + positionPoint.z >= minZ && point.z + positionPoint.z <= maxZ)
+    glm::vec3 min;
+    glm::vec3 max;
+
+	min.x = std::min({ transformedVertices[0].x, transformedVertices[1].x, transformedVertices[2].x, transformedVertices[3].x,
+					   transformedVertices[4].x, transformedVertices[5].x, transformedVertices[6].x, transformedVertices[7].x });
+
+	max.x = std::max({ transformedVertices[0].x, transformedVertices[1].x, transformedVertices[2].x, transformedVertices[3].x,
+					   transformedVertices[4].x, transformedVertices[5].x, transformedVertices[6].x, transformedVertices[7].x });
+
+	min.y = std::min({ transformedVertices[0].y, transformedVertices[1].y, transformedVertices[2].y, transformedVertices[3].y,
+					   transformedVertices[4].y, transformedVertices[5].y, transformedVertices[6].y, transformedVertices[7].y });
+
+    max.y = std::max({ transformedVertices[0].y, transformedVertices[1].y, transformedVertices[2].y, transformedVertices[3].y,
+                       transformedVertices[4].y, transformedVertices[5].y, transformedVertices[6].y, transformedVertices[7].y });
+
+	min.z = std::min({ transformedVertices[0].z, transformedVertices[1].z, transformedVertices[2].z, transformedVertices[3].z,
+		                transformedVertices[4].z, transformedVertices[5].z, transformedVertices[6].z, transformedVertices[7].z });
+
+    max.z = std::max({ transformedVertices[0].z, transformedVertices[1].z, transformedVertices[2].z, transformedVertices[3].z,
+                        transformedVertices[4].z, transformedVertices[5].z, transformedVertices[6].z, transformedVertices[7].z });
+
+
+    if (point.x + positionPoint.x >= min.x && point.x + positionPoint.x <= max.x &&
+        point.y + positionPoint.y >= min.y && point.y + positionPoint.y <= max.y &&
+        point.z + positionPoint.z >= min.z && point.z + positionPoint.z <= max.z)
     {
         return 1;
     }
