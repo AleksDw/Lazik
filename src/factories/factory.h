@@ -26,6 +26,9 @@ public:
 
     unsigned int make_bum(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
 
+    unsigned int make_tree1(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
+    unsigned int make_tree2(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
+
     unsigned int make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
 
 	void make_terrain(glm::vec3 position, glm::vec3 eulers);
