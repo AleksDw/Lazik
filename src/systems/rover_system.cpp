@@ -8,6 +8,7 @@ float speed = 0.0f;
 float turnSpeed = 0.5f;
 float wheelAngle = 0.0f;
 bool jebna = false;
+float cd = 60;
 
 const float acceleration = 2.0f;
 const float deceleration = 5.0f;
@@ -18,7 +19,8 @@ int const LEWE_KOLO_PRZOD = 3;
 int const LEWE_KOLO_TYL = 4;
 const float MAX_SPEED = 5.0f;
 const float MAX_WHEEL_ANGLE = 30.0f;
-
+bool bullet_list[5] = { false };
+float bullet_speed = 5.0f;
 
 RoverSystem::RoverSystem(GLFWwindow* window) {
     this->window = window;
@@ -56,6 +58,32 @@ void RoverSystem::update(
         wheelAngle--;
         if (wheelAngle < -MAX_WHEEL_ANGLE) wheelAngle = -MAX_WHEEL_ANGLE;
     }
+    if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS && cd >= 60) {
+        for (int i = 0; i <= 5; i++) {
+            if (!bullet_list[i]) {
+                bullet_list[i] = true;
+                transformComponents[controlledEntity + i + 1].position.x = transformComponents[controlledEntity].position.x;
+                transformComponents[controlledEntity + i + 1].position.y = transformComponents[controlledEntity].position.y;
+                transformComponents[controlledEntity + i + 1].position.z = transformComponents[controlledEntity].position.z;
+                transformComponents[controlledEntity + i + 1].eulers.x = transformComponents[controlledEntity].eulers.x;
+                transformComponents[controlledEntity + i + 1].eulers.z = transformComponents[controlledEntity].eulers.z;
+                glm::vec2 direction = glm::rotate(glm::vec2(1.0f, 0.0f), angle);
+                physicsComponents[controlledEntity + i + 1].velocity = glm::vec3(direction.x, direction.y, 0.0f) * bullet_speed + glm::vec3(direction.x, direction.y, 0.0f) * speed;
+                physicsComponents[controlledEntity + i + 1].velocity.z = 2;
+                cd = 0;
+                break;
+            }
+        }
+    }
+    if (cd < 120) {
+        cd++;
+    }
+    for (int i = 0; i <= 5; i++) {
+        if (bullet_list[i]) {
+            transformComponents[controlledEntity + i + 1].position += physicsComponents[controlledEntity + i + 1].velocity * dt;
+            physicsComponents[controlledEntity + i + 1].velocity.z -= 0.01;
+        }
+    }
 
 	// jezeli nie wcisnieto lub wcisnieto lewego i prawego to kat kola powinien malec
     if ((glfwGetKey(window, GLFW_KEY_LEFT) != GLFW_PRESS && glfwGetKey(window, GLFW_KEY_RIGHT) != GLFW_PRESS) || 
@@ -82,19 +110,20 @@ void RoverSystem::update(
     // obliczanie zmiany kata obrotu lazika
     if (speed > turnSpeed)
     {
+        if(!jebna)
         angle += (dt * wheelAngle * turnSpeed)/30;
     }
     else
 	{
+        if (!jebna)
         angle += (dt * wheelAngle * speed)/30;
 	}
-
-    angle = fmod(angle, 2.0f * MPI);
-    if (angle < 0) {
-        angle += 2.0f * MPI;
-    }
-
-    
+    if(!jebna)
+        angle = fmod(angle, 2.0f * MPI);
+        if (angle < 0) {
+            angle += 2.0f * MPI;
+        }
+    jebna = false;
     glm::vec2 direction = glm::rotate(glm::vec2(1.0f, 0.0f), angle);
     for (int i = 0; i <= controlledEntity; i++) {
         if (i > 0) {
@@ -156,6 +185,7 @@ void RoverSystem::update(
         }
         transformComponentsHitbox[0].eulers.z = angle * (180.0f / MPI);
         transformComponentsHitbox[0].position = transformComponents[0].position;
+        //speed = speed * 0.7;
     }
     else {
         for (int i = 0; i <= controlledEntity; i++) {
@@ -163,7 +193,7 @@ void RoverSystem::update(
         }
     }
 
-    jebna = false;
+
 
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
         speed *= 0.95f;

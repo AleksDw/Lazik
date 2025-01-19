@@ -253,6 +253,33 @@ unsigned int Factory::make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3
 	return entities_made++;
 }
 
+unsigned int Factory::make_bullet(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity)
+{
+    PhysicsComponent physics;
+    physics.velocity = { 0.0f, 0.0f, 0.0f };
+    physics.eulerVelocity = eulerVelocity;
+    physicsComponents[entities_made] = physics;
+
+    TransformComponent transform;
+    TransformHitBoxComponent hitbox;
+    hitbox.position = position;
+    hitbox.eulers = eulers;
+    transform.position = position;
+    transform.eulers = eulers;
+    transformComponents[entities_made] = transform;
+
+    glm::mat4 preTransform = glm::mat4(1.0f);
+    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
+    preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+
+    RenderComponent render = make_obj_mesh("../../../models/bum.obj", preTransform);
+    render.material = make_texture("../../../img/Body_BaseColor.png");
+    renderComponents[entities_made] = render;
+
+    return entities_made++;
+}
+
+
 void Factory::make_terrain(glm::vec3 position, glm::vec3 eulers)
 {
     TransformComponent transform;

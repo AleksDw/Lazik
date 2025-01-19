@@ -31,6 +31,8 @@ public:
 
     unsigned int make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
 
+    unsigned int make_bullet(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
+
 	void make_terrain(glm::vec3 position, glm::vec3 eulers);
 
     HitBoxComponent make_obj_coliderbox(const char* filepath, glm::mat4 preTransform);
