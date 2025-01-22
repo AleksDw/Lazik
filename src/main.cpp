@@ -24,8 +24,8 @@ int main()
 		factory->make_bullet({ 0.0f, 8.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
 	}
 
-	factory->make_terrain({ 5.0f, 4.0f, 0.0f }, { 0.0f, 0.0f, 180.0f });
-	//factory->make_bum({ 20.0f, 0.0f, -1.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
+	//factory->make_terrain({ 5.0f, 4.0f, 0.0f }, { 0.0f, 0.0f, 180.0f });
+	factory->make_bum({ 20.0f, 0.0f, -1.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
 	factory->make_tree1({ 10.0f, 0.0f, -1.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
 	factory->make_tree2({ -5.0f, 0.0f, -1.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
 

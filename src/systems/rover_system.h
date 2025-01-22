@@ -21,7 +21,7 @@ public:
         std::unordered_map<unsigned int,
         HitBoxComponent>& hitBoxComponentHitbox, float dt, unsigned int controlledEntity);
 
-    int isPointInsideCube(const glm::vec3& point, const std::vector<glm::vec3>& vertices, const glm::vec3& positionRover, const glm::vec3& positionPoint, const glm::vec3& eulersRover);
+    glm::vec3 calculateMTV(const HitBoxComponent& boxA, const HitBoxComponent& boxB, const TransformHitBoxComponent& transformA, const TransformHitBoxComponent& transformB);
 
 private:
     GLFWwindow* window;
