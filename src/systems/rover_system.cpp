@@ -15,6 +15,7 @@ glm::vec3 POD_PRAWE_KOLO_TYL;
 glm::vec3 POD_LEWE_KOLO_PRZOD;
 glm::vec3 POD_LEWE_KOLO_TYL;
 
+const float spring = 0.2f;
 const float acceleration = 2.0f;
 const float deceleration = 5.0f;
 const float MPI = 3.14159265359;
@@ -136,16 +137,16 @@ void RoverSystem::update(
             glm::vec3 localOffset;
             switch (i) {
             case PRAWE_KOLO_PRZOD:
-                localOffset = glm::vec3(1.85486f, -0.64958f, -0.686f);
+                localOffset = glm::vec3(1.25f, -0.64958f, -0.686f);
                 break;
             case PRAWE_KOLO_TYL:
-                localOffset = glm::vec3(-0.65486f, -0.64958f, -0.686f);
+                localOffset = glm::vec3(-1.25f, -0.64958f, -0.686f);
                 break;
             case LEWE_KOLO_PRZOD:
-                localOffset = glm::vec3(1.85486f, 0.64958f, -0.686f);
+                localOffset = glm::vec3(1.25f, 0.64958f, -0.686f);
                 break;
             case LEWE_KOLO_TYL:
-                localOffset = glm::vec3(-0.65486f, 0.64958f, -0.686f);
+                localOffset = glm::vec3(-1.25f, 0.64958f, -0.686f);
                 break;
             default:
                 localOffset = glm::vec3(0.0f, 0.0f, 0.0f);
@@ -206,15 +207,18 @@ void RoverSystem::update(
     glm::vec2(transformComponents[LEWE_KOLO_TYL].position.x, transformComponents[LEWE_KOLO_TYL].position.y)
     };
 
-
-
     try
     {
         std::vector<float> z = getTerrainHeights(renderComponentsHitboxTerrain[0], points);
-        transformComponents[PRAWE_KOLO_PRZOD].position.z = z[0] + 0.5;
-        transformComponents[LEWE_KOLO_PRZOD].position.z = z[1] + 0.5;
-        transformComponents[PRAWE_KOLO_TYL].position.z = z[2] + 0.5;
-        transformComponents[LEWE_KOLO_TYL].position.z = z[3] + 0.5;
+        float position_after_PRAWE_KOLO_PRZOD = glm::max(glm::min(transformComponents[PRAWE_KOLO_PRZOD].position.z + spring, z[0] + 0.5f), transformComponents[PRAWE_KOLO_PRZOD].position.z - spring);
+        float position_after_LEWE_KOLO_PRZOD = glm::max(glm::min(transformComponents[LEWE_KOLO_PRZOD].position.z + spring, z[1] + 0.5f), transformComponents[LEWE_KOLO_PRZOD].position.z - spring);
+        float position_after_PRAWE_KOLO_TYL = glm::max(glm::min(transformComponents[PRAWE_KOLO_TYL].position.z + spring, z[2] + 0.5f), transformComponents[PRAWE_KOLO_TYL].position.z - spring);
+        float position_after_LEWE_KOLO_TYL = glm::max(glm::min(transformComponents[LEWE_KOLO_TYL].position.z + spring, z[3] + 0.5f), transformComponents[LEWE_KOLO_TYL].position.z - spring);
+
+        transformComponents[PRAWE_KOLO_PRZOD].position.z = position_after_PRAWE_KOLO_PRZOD;
+        transformComponents[LEWE_KOLO_PRZOD].position.z = position_after_LEWE_KOLO_PRZOD;
+        transformComponents[PRAWE_KOLO_TYL].position.z = position_after_PRAWE_KOLO_TYL;
+        transformComponents[LEWE_KOLO_TYL].position.z = position_after_LEWE_KOLO_TYL;
     }
     catch (const std::exception& e)
     {
@@ -273,8 +277,9 @@ int RoverSystem::isPointInsideCube(const glm::vec3& point, const std::vector<glm
 
 std::vector<float> RoverSystem::getTerrainHeights(const HitBoxComponentTerrain& terrain,
     const std::array<glm::vec2, 4>& points) {
+
     std::vector<float> heights;
-    heights.reserve(4);
+    heights.reserve(points.size());
 
     // Iterate through each point
     for (const auto& p : points) {
@@ -282,22 +287,23 @@ std::vector<float> RoverSystem::getTerrainHeights(const HitBoxComponentTerrain& 
 
         for (const auto& triangle : terrain.triangles) {
             // Extract triangle vertices
-            glm::vec3 v0 = triangle[0];
-            glm::vec3 v1 = triangle[1];
-            glm::vec3 v2 = triangle[2];
+            const glm::vec3& v0 = triangle[0];
+            const glm::vec3& v1 = triangle[1];
+            const glm::vec3& v2 = triangle[2];
 
-            // Project triangle to 2D
+            // Project triangle to 2D once
             glm::vec2 A(v0.x, v0.y);
             glm::vec2 B(v1.x, v1.y);
             glm::vec2 C(v2.x, v2.y);
 
             // Check if the point is inside this triangle
             if (pointInTriangle2D(p, A, B, C)) {
-                // Calculate plane equation: Ax + By + Cz + D = 0
+                // Calculate normal vector for the triangle plane
                 glm::vec3 edge1 = v1 - v0;
                 glm::vec3 edge2 = v2 - v0;
                 glm::vec3 normal = glm::cross(edge1, edge2);
 
+                // Calculate plane equation: Ax + By + Cz + D = 0
                 float A = normal.x;
                 float B = normal.y;
                 float C = normal.z;
@@ -309,9 +315,6 @@ std::vector<float> RoverSystem::getTerrainHeights(const HitBoxComponentTerrain& 
                     heights.push_back(z);
                     found = true;
                     break; // Move to the next point
-                }
-                else {
-                    throw std::runtime_error("getTerrainHeights: Degenerate plane with C = 0");
                 }
             }
         }
@@ -326,25 +329,27 @@ std::vector<float> RoverSystem::getTerrainHeights(const HitBoxComponentTerrain& 
     return heights;
 }
 
-
-
 bool RoverSystem::pointInTriangle2D(const glm::vec2& p, const glm::vec2& a, const glm::vec2& b, const glm::vec2& c) {
+    // Helper lambda for 2D cross product
     auto cross = [](const glm::vec2& u, const glm::vec2& v) {
         return u.x * v.y - u.y * v.x;
         };
 
+    // Precompute edges
     glm::vec2 ab = b - a;
     glm::vec2 bc = c - b;
     glm::vec2 ca = a - c;
 
+    // Compute vectors from point to triangle vertices
     glm::vec2 ap = p - a;
     glm::vec2 bp = p - b;
     glm::vec2 cp = p - c;
 
+    // Compute cross products to determine the point's location
     float cross1 = cross(ab, ap);
     float cross2 = cross(bc, bp);
     float cross3 = cross(ca, cp);
 
-    // Sprawdzenie, czy wszystkie iloczyny wektorowe mają ten sam znak
+    // Check if all cross products have the same sign
     return (cross1 >= 0 && cross2 >= 0 && cross3 >= 0) || (cross1 <= 0 && cross2 <= 0 && cross3 <= 0);
 }
