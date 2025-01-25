@@ -6,15 +6,13 @@
 #include "../components/transform_component.h"
 #include "../components/transformHitBox_component.h"
 #include "../components/hitBox_component.h"
+#include "../components/hitBoxTerrain_component.h"
 
 class Factory {
 
 public:
-    Factory(std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents,
-        std::unordered_map<unsigned int, RenderComponent>& renderComponents,
-        std::unordered_map<unsigned int, HitBoxComponent>& renderComponentsHitbox,
-        std::unordered_map<unsigned int, TransformComponent>& transformComponents,
-        std::unordered_map<unsigned int, TransformHitBoxComponent>& transformComponentsHitbox);
+
+    Factory(std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents, std::unordered_map<unsigned int, RenderComponent>& renderComponents, std::unordered_map<unsigned int, HitBoxComponent>& renderComponentsHitbox, std::unordered_map<unsigned int, HitBoxComponentTerrain>& renderComponentsHitboxTerrain, std::unordered_map<unsigned int, TransformComponent>& transformComponents, std::unordered_map<unsigned int, TransformHitBoxComponent>& transformComponentsHitbox);
 
     ~Factory();
 
@@ -37,6 +35,8 @@ public:
 
     HitBoxComponent make_obj_coliderbox(const char* filepath, glm::mat4 preTransform);
 
+    HitBoxComponentTerrain loadObjAsTriangle(const char* filepath, glm::mat4 preTransform);
+
 private:
 
     unsigned int entities_made = 0;
@@ -44,9 +44,10 @@ private:
     std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents;
     std::unordered_map<unsigned int, RenderComponent>& renderComponents;
     std::unordered_map<unsigned int, HitBoxComponent>& renderComponentsHitbox;
+    std::unordered_map<unsigned int, HitBoxComponentTerrain>& renderComponentsHitboxTerrain;
     std::unordered_map<unsigned int, TransformComponent>& transformComponents;
     std::unordered_map<unsigned int, TransformHitBoxComponent>& transformComponentsHitbox;
-
+    HitBoxComponentTerrain hitBoxComponentTerrain;
     std::vector<unsigned int> VAOs;
     std::vector<unsigned int> VBOs;
     std::vector<unsigned int> textures;
@@ -60,6 +61,7 @@ private:
     void read_face(std::vector<std::string> words, 
         std::vector<glm::vec3>& v, std::vector<glm::vec2>& vt, 
         std::vector<glm::vec3>& vn, std::vector<float>& vertices);
+    void read_corner2(std::string description, std::vector<glm::vec3>& v, std::vector<glm::vec2>& vt, std::vector<glm::vec3>& vn, std::vector<float>& vertices);
     void read_corner(std::string description, 
         std::vector<glm::vec3>& v, std::vector<glm::vec2>& vt, 
         std::vector<glm::vec3>& vn, std::vector<float>& vertices);

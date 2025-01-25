@@ -19,7 +19,7 @@ add_executable(hello_window
     src/systems/render_system.cpp
     src/view/shader.cpp
     src/controller/app.cpp
- "src/systems/rover_system.cpp" "src/systems/rover_system.h" "src/components/hitBox_component.h" "src/components/transformHitBox_component.h")
+ "src/systems/rover_system.cpp" "src/systems/rover_system.h" "src/components/hitBox_component.h" "src/components/transformHitBox_component.h" "src/components/hitBoxTerrain_component.h")
 
 target_include_directories(hello_window 
     PRIVATE

@@ -15,7 +15,7 @@ int main()
 	App* app = new App();
 	Factory* factory = new Factory(
 		app->physicsComponents, 
-		app->renderComponents, app->renderComponentsHitbox, app->transformComponents, app->transformComponentsHitbox);
+		app->renderComponents, app->renderComponentsHitbox,app->hitBoxComponentTerrain, app->transformComponents, app->transformComponentsHitbox);
 	
 	unsigned int roverEntity = factory->make_rover({ 5.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, {0.0f, 0.0f, 0.0f});
 	app->roverID = roverEntity;
@@ -24,7 +24,7 @@ int main()
 		factory->make_bullet({ 0.0f, 8.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
 	}
 
-	factory->make_terrain({ 5.0f, 4.0f, 0.0f }, { 0.0f, 0.0f, 180.0f });
+	factory->make_terrain({ 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
 	//factory->make_bum({ 20.0f, 0.0f, -1.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
 	factory->make_tree1({ 10.0f, 0.0f, -1.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
 	factory->make_tree2({ -5.0f, 0.0f, -1.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });

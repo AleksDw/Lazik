@@ -1,16 +1,19 @@
 ﻿#include "factory.h"
 #include "../stb_image.h"
+#include <array>
 
 Factory::Factory(
     std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents,
     std::unordered_map<unsigned int, RenderComponent>& renderComponents,
     std::unordered_map<unsigned int, HitBoxComponent>& renderComponentsHitbox,
+    std::unordered_map<unsigned int, HitBoxComponentTerrain>& renderComponentsHitboxTerrain,
     std::unordered_map<unsigned int, TransformComponent>& transformComponents,
     std::unordered_map<unsigned int, TransformHitBoxComponent>& transformComponentsHitbox
     ):
 physicsComponents(physicsComponents),
 renderComponents(renderComponents),
 renderComponentsHitbox(renderComponentsHitbox),
+renderComponentsHitboxTerrain(renderComponentsHitboxTerrain),
 transformComponents(transformComponents),
 transformComponentsHitbox(transformComponentsHitbox)
 {
@@ -292,9 +295,13 @@ void Factory::make_terrain(glm::vec3 position, glm::vec3 eulers)
     preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
     RenderComponent render = make_obj_mesh("../../../models/terrain.obj", preTransform);
+    HitBoxComponentTerrain renderhitbox = loadObjAsTriangle("../../../models/terrain.obj", preTransform);
     render.material = make_texture("../../../img/rock_face_diff_4k.jpg");
+
     renderComponents[entities_made++] = render;
+    renderComponentsHitboxTerrain[0] = renderhitbox;
 }
+
 HitBoxComponent Factory::make_obj_coliderbox(const char* filepath, glm::mat4 preTransform) {
     std::vector<glm::vec3> v; // Store only vertices
 
@@ -323,6 +330,78 @@ HitBoxComponent Factory::make_obj_coliderbox(const char* filepath, glm::mat4 pre
     render.vertices = v; // Assuming RenderComponent has a `vertices` field for debugging
 
     return render;
+}
+
+HitBoxComponentTerrain Factory::loadObjAsTriangle(const char* filepath, glm::mat4 preTransform)
+{
+    // Temporary storage for raw vertices and triangles
+    std::vector<glm::vec3> tempVertices;
+    std::vector<std::array<glm::vec3, 3>> tempTriangles;
+
+    // Open the file
+    std::ifstream file(filepath);
+    if (!file.is_open()) {
+        throw std::runtime_error("Failed to open OBJ file: " + std::string(filepath));
+    }
+
+    std::string line;
+    while (std::getline(file, line))
+    {
+        // Tokenize the line
+        std::vector<std::string> tokens = split(line, " ");
+        if (tokens.empty()) continue;
+
+        const std::string& prefix = tokens[0];
+
+        // Handle "v" lines (vertices)
+        if (prefix == "v")
+        {
+            // Parse the vertex and apply preTransform
+            glm::vec3 raw = read_vec3(tokens, glm::mat4(1.0f), 1.0f);
+            glm::vec4 transformed = preTransform * glm::vec4(raw, 1.0f);
+            tempVertices.push_back(glm::vec3(transformed));
+        }
+
+        // Handle "f" lines (faces with at least 3 vertices)
+        else if (prefix == "f")
+        {
+            if (tokens.size() < 4) {
+                // Skip if fewer than 3 indices are present
+                continue;
+            }
+
+            // Parse vertex indices from the face line
+            auto parseIndex = [&](const std::string& s) {
+                size_t slashPos = s.find('/');
+                if (slashPos == std::string::npos) {
+                    return static_cast<unsigned int>(std::stoi(s)) - 1; // Convert OBJ 1-based to 0-based
+                }
+                else {
+                    return static_cast<unsigned int>(std::stoi(s.substr(0, slashPos))) - 1;
+                }
+                };
+
+            // Extract first three vertices (v1, v2, v3) and store as a triangle
+            unsigned int i1 = parseIndex(tokens[1]);
+            unsigned int i2 = parseIndex(tokens[2]);
+            unsigned int i3 = parseIndex(tokens[3]);
+
+            if (i1 < tempVertices.size() && i2 < tempVertices.size() && i3 < tempVertices.size()) {
+                tempTriangles.push_back(std::array<glm::vec3, 3>{ tempVertices[i1], tempVertices[i2], tempVertices[i3] });
+            }
+        }
+    }
+
+    file.close();
+
+    // Fill the HitBoxComponentTerrain structure
+    HitBoxComponentTerrain terrain;
+    terrain.vertexCount = static_cast<unsigned int>(tempVertices.size());
+    terrain.vertices = std::move(tempVertices);
+    terrain.triangleCount = static_cast<unsigned int>(tempTriangles.size());
+    terrain.triangles = std::move(tempTriangles);
+
+    return terrain;
 }
 
 
@@ -448,6 +527,49 @@ void Factory::read_face(std::vector<std::string> words,
     }
 
 }
+
+void Factory::read_corner2(std::string description,
+    std::vector<glm::vec3>& v,
+    std::vector<glm::vec2>& vt,
+    std::vector<glm::vec3>& vn,
+    std::vector<float>& vertices)
+{
+    // E.g. description = "31158/12151/10395"
+    std::vector<std::string> v_vt_vn = split(description, "/");
+
+    // position
+    glm::vec3 pos = v[std::stoi(v_vt_vn[0]) - 1];
+    vertices.push_back(pos.x);
+    vertices.push_back(pos.y);
+    vertices.push_back(pos.z);
+
+    // texture coordinate
+    if (v_vt_vn.size() > 1 && !v_vt_vn[1].empty()) {
+        glm::vec2 texcoord = vt[std::stoi(v_vt_vn[1]) - 1];
+        vertices.push_back(texcoord.x);
+        vertices.push_back(texcoord.y);
+    }
+    else {
+        // no texture => push default or 0,0
+        vertices.push_back(0.0f);
+        vertices.push_back(0.0f);
+    }
+
+    // normal
+    if (v_vt_vn.size() > 2 && !v_vt_vn[2].empty()) {
+        glm::vec3 normal = vn[std::stoi(v_vt_vn[2]) - 1];
+        vertices.push_back(normal.x);
+        vertices.push_back(normal.y);
+        vertices.push_back(normal.z);
+    }
+    else {
+        // no normal => push default or 0,0,1
+        vertices.push_back(0.0f);
+        vertices.push_back(0.0f);
+        vertices.push_back(1.0f);
+    }
+}
+
 
 void Factory::read_corner(std::string description, 
     std::vector<glm::vec3>& v, std::vector<glm::vec2>& vt, 

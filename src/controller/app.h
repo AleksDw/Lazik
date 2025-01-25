@@ -34,6 +34,7 @@ public:
     unsigned int roverID;
     std::unordered_map<unsigned int, RenderComponent> renderComponents;
     std::unordered_map<unsigned int, HitBoxComponent> renderComponentsHitbox;
+    std::unordered_map<unsigned int, HitBoxComponentTerrain> hitBoxComponentTerrain;
     
 private:
     void set_up_glfw();

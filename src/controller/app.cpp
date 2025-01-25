@@ -26,7 +26,7 @@ void App::run()
         motionSystem->update(
             transformComponents, physicsComponents, 16.67f/1000.0f);
 		roverSystem->update(
-			transformComponents,transformComponentsHitbox, physicsComponents,renderComponentsHitbox, 16.67f / 1000.0f, roverID);
+			transformComponents,transformComponentsHitbox, physicsComponents,renderComponentsHitbox, hitBoxComponentTerrain, 16.67f / 1000.0f, roverID);
 
         bool should_close = cameraSystem->update(
             transformComponents, cameraID, *cameraComponent, 16.67f/1000.0f);

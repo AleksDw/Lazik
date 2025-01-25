@@ -1,4 +1,4 @@
-#include "rover_system.h"
+﻿#include "rover_system.h"
 #include <iostream>
 #include <glm/gtx/rotate_vector.hpp>
 
@@ -9,6 +9,11 @@ float turnSpeed = 0.5f;
 float wheelAngle = 0.0f;
 bool jebna = false;
 float cd = 60;
+
+glm::vec3 POD_PRAWE_KOLO_PRZOD;
+glm::vec3 POD_PRAWE_KOLO_TYL;
+glm::vec3 POD_LEWE_KOLO_PRZOD;
+glm::vec3 POD_LEWE_KOLO_TYL;
 
 const float acceleration = 2.0f;
 const float deceleration = 5.0f;
@@ -32,12 +37,13 @@ void RoverSystem::update(
     std::unordered_map<unsigned int, TransformHitBoxComponent>& transformComponentsHitbox,
     std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents,
     std::unordered_map<unsigned int, HitBoxComponent>& hitBoxComponent,
+    std::unordered_map<unsigned int, HitBoxComponentTerrain>& renderComponentsHitboxTerrain,
     float dt, unsigned int controlledEntity)
 {
     for (int i = 0; i <= controlledEntity; i++) {
         tempPositions[i] = transformComponents[i];
     }
-    
+
     // sterowanie
     if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
         speed += acceleration * dt;
@@ -193,6 +199,27 @@ void RoverSystem::update(
         }
     }
 
+    std::array<glm::vec2, 4> points = {
+    glm::vec2(transformComponents[PRAWE_KOLO_PRZOD].position.x, transformComponents[PRAWE_KOLO_PRZOD].position.y),
+    glm::vec2(transformComponents[LEWE_KOLO_PRZOD].position.x, transformComponents[LEWE_KOLO_PRZOD].position.y),
+    glm::vec2(transformComponents[PRAWE_KOLO_TYL].position.x,transformComponents[PRAWE_KOLO_TYL].position.y),
+    glm::vec2(transformComponents[LEWE_KOLO_TYL].position.x, transformComponents[LEWE_KOLO_TYL].position.y)
+    };
+
+
+
+    try
+    {
+        std::vector<float> z = getTerrainHeights(renderComponentsHitboxTerrain[0], points);
+        transformComponents[PRAWE_KOLO_PRZOD].position.z = z[0] + 0.5;
+        transformComponents[LEWE_KOLO_PRZOD].position.z = z[1] + 0.5;
+        transformComponents[PRAWE_KOLO_TYL].position.z = z[2] + 0.5;
+        transformComponents[LEWE_KOLO_TYL].position.z = z[3] + 0.5;
+    }
+    catch (const std::exception& e)
+    {
+        std::cerr << "Error: " << e.what() << std::endl;
+    }
 
 
     if (glfwGetKey(window, GLFW_KEY_SPACE) == GLFW_PRESS) {
@@ -203,45 +230,121 @@ void RoverSystem::update(
 
 int RoverSystem::isPointInsideCube(const glm::vec3& point, const std::vector<glm::vec3>& vertices, const glm::vec3& positionRover, const glm::vec3& positionPoint, const glm::vec3& eulersRover) {
 
+
+    // Create the rotation matrix for the cuboid's orientation
     glm::mat4 rotationMatrix = glm::mat4(1.0f);
     rotationMatrix = glm::rotate(rotationMatrix, glm::radians(eulersRover.x), glm::vec3(1, 0, 0));
     rotationMatrix = glm::rotate(rotationMatrix, glm::radians(eulersRover.y), glm::vec3(0, 1, 0));
     rotationMatrix = glm::rotate(rotationMatrix, glm::radians(eulersRover.z), glm::vec3(0, 0, 1));
 
+    // Transform each vertex of the cuboid based on its rotation and rover position
     std::vector<glm::vec3> transformedVertices;
-	for (const auto& vertex : vertices) {
-		glm::vec4 transformedVertex = rotationMatrix * glm::vec4(vertex, 1.0f);
-		transformedVertices.push_back(glm::vec3(transformedVertex) + positionRover);
-	}
+    for (const auto& vertex : vertices) {
+        glm::vec4 transformedVertex = rotationMatrix * glm::vec4(vertex, 1.0f);
+        transformedVertices.push_back(glm::vec3(transformedVertex) + positionRover);
+    }
 
-    glm::vec3 min;
-    glm::vec3 max;
+    // Calculate the bounds of the cuboid (min and max for each axis)
+    glm::vec3 min, max;
 
-	min.x = std::min({ transformedVertices[0].x, transformedVertices[1].x, transformedVertices[2].x, transformedVertices[3].x,
-					   transformedVertices[4].x, transformedVertices[5].x, transformedVertices[6].x, transformedVertices[7].x });
+    min.x = std::min({ transformedVertices[0].x, transformedVertices[1].x, transformedVertices[2].x, transformedVertices[3].x,
+                       transformedVertices[4].x, transformedVertices[5].x, transformedVertices[6].x, transformedVertices[7].x });
+    max.x = std::max({ transformedVertices[0].x, transformedVertices[1].x, transformedVertices[2].x, transformedVertices[3].x,
+                       transformedVertices[4].x, transformedVertices[5].x, transformedVertices[6].x, transformedVertices[7].x });
 
-	max.x = std::max({ transformedVertices[0].x, transformedVertices[1].x, transformedVertices[2].x, transformedVertices[3].x,
-					   transformedVertices[4].x, transformedVertices[5].x, transformedVertices[6].x, transformedVertices[7].x });
-
-	min.y = std::min({ transformedVertices[0].y, transformedVertices[1].y, transformedVertices[2].y, transformedVertices[3].y,
-					   transformedVertices[4].y, transformedVertices[5].y, transformedVertices[6].y, transformedVertices[7].y });
-
+    min.y = std::min({ transformedVertices[0].y, transformedVertices[1].y, transformedVertices[2].y, transformedVertices[3].y,
+                       transformedVertices[4].y, transformedVertices[5].y, transformedVertices[6].y, transformedVertices[7].y });
     max.y = std::max({ transformedVertices[0].y, transformedVertices[1].y, transformedVertices[2].y, transformedVertices[3].y,
                        transformedVertices[4].y, transformedVertices[5].y, transformedVertices[6].y, transformedVertices[7].y });
 
-	min.z = std::min({ transformedVertices[0].z, transformedVertices[1].z, transformedVertices[2].z, transformedVertices[3].z,
-		                transformedVertices[4].z, transformedVertices[5].z, transformedVertices[6].z, transformedVertices[7].z });
-
+    min.z = std::min({ transformedVertices[0].z, transformedVertices[1].z, transformedVertices[2].z, transformedVertices[3].z,
+                       transformedVertices[4].z, transformedVertices[5].z, transformedVertices[6].z, transformedVertices[7].z });
     max.z = std::max({ transformedVertices[0].z, transformedVertices[1].z, transformedVertices[2].z, transformedVertices[3].z,
-                        transformedVertices[4].z, transformedVertices[5].z, transformedVertices[6].z, transformedVertices[7].z });
+                       transformedVertices[4].z, transformedVertices[5].z, transformedVertices[6].z, transformedVertices[7].z });
 
-
+    // Check if the point is inside the cuboid
     if (point.x + positionPoint.x >= min.x && point.x + positionPoint.x <= max.x &&
         point.y + positionPoint.y >= min.y && point.y + positionPoint.y <= max.y &&
-        point.z + positionPoint.z >= min.z && point.z + positionPoint.z <= max.z)
-    {
-        return 1;
+        point.z + positionPoint.z >= min.z && point.z + positionPoint.z <= max.z) {
+        return 1; // Point is inside the cuboid
     }
-    return 0;
+    return 0; // Point is outside the cuboid
 }
 
+std::vector<float> RoverSystem::getTerrainHeights(const HitBoxComponentTerrain& terrain,
+    const std::array<glm::vec2, 4>& points) {
+    std::vector<float> heights;
+    heights.reserve(4);
+
+    // Iterate through each point
+    for (const auto& p : points) {
+        bool found = false;
+
+        for (const auto& triangle : terrain.triangles) {
+            // Extract triangle vertices
+            glm::vec3 v0 = triangle[0];
+            glm::vec3 v1 = triangle[1];
+            glm::vec3 v2 = triangle[2];
+
+            // Project triangle to 2D
+            glm::vec2 A(v0.x, v0.y);
+            glm::vec2 B(v1.x, v1.y);
+            glm::vec2 C(v2.x, v2.y);
+
+            // Check if the point is inside this triangle
+            if (pointInTriangle2D(p, A, B, C)) {
+                // Calculate plane equation: Ax + By + Cz + D = 0
+                glm::vec3 edge1 = v1 - v0;
+                glm::vec3 edge2 = v2 - v0;
+                glm::vec3 normal = glm::cross(edge1, edge2);
+
+                float A = normal.x;
+                float B = normal.y;
+                float C = normal.z;
+                float D = -glm::dot(normal, v0);
+
+                // Compute height (z) for the given point (x, y)
+                if (C != 0.0f) {
+                    float z = -(A * p.x + B * p.y + D) / C;
+                    heights.push_back(z);
+                    found = true;
+                    break; // Move to the next point
+                }
+                else {
+                    throw std::runtime_error("getTerrainHeights: Degenerate plane with C = 0");
+                }
+            }
+        }
+
+        if (!found) {
+            throw std::runtime_error(
+                "getTerrainHeights: Point (" + std::to_string(p.x) + ", " + std::to_string(p.y) +
+                ") is outside of terrain");
+        }
+    }
+
+    return heights;
+}
+
+
+
+bool RoverSystem::pointInTriangle2D(const glm::vec2& p, const glm::vec2& a, const glm::vec2& b, const glm::vec2& c) {
+    auto cross = [](const glm::vec2& u, const glm::vec2& v) {
+        return u.x * v.y - u.y * v.x;
+        };
+
+    glm::vec2 ab = b - a;
+    glm::vec2 bc = c - b;
+    glm::vec2 ca = a - c;
+
+    glm::vec2 ap = p - a;
+    glm::vec2 bp = p - b;
+    glm::vec2 cp = p - c;
+
+    float cross1 = cross(ab, ap);
+    float cross2 = cross(bc, bp);
+    float cross3 = cross(ca, cp);
+
+    // Sprawdzenie, czy wszystkie iloczyny wektorowe mają ten sam znak
+    return (cross1 >= 0 && cross2 >= 0 && cross3 >= 0) || (cross1 <= 0 && cross2 <= 0 && cross3 <= 0);
+}
