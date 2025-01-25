@@ -1,7 +1,7 @@
 ﻿#include "rover_system.h"
 #include <iostream>
 #include <glm/gtx/rotate_vector.hpp>
-
+#include <cmath>
 glm::vec3 position = { 0.0f, 0.0f, 0.0f };
 float angle = 0.0f;
 float speed = 0.0f;
@@ -15,6 +15,7 @@ glm::vec3 POD_PRAWE_KOLO_TYL;
 glm::vec3 POD_LEWE_KOLO_PRZOD;
 glm::vec3 POD_LEWE_KOLO_TYL;
 
+float y_dostosuj_speed = 0;
 const float spring = 0.2f;
 const float acceleration = 2.0f;
 const float deceleration = 5.0f;
@@ -152,9 +153,15 @@ void RoverSystem::update(
                 localOffset = glm::vec3(0.0f, 0.0f, 0.0f);
                 break;
             }
-            glm::vec3 rotatedOffset = glm::rotateZ(localOffset, glm::radians(tempPositions[0].eulers.z));
-            tempPositions[i].position = tempPositions[0].position + rotatedOffset;
+            glm::vec3 rotatedOffsetZ = glm::rotateZ(localOffset, glm::radians(tempPositions[0].eulers.z));
+            tempPositions[i].position = tempPositions[0].position + rotatedOffsetZ;
             physicsComponents[i].velocity = physicsComponents[0].velocity;
+
+            //glm::vec3 rotatedOffsetY = glm::rotateY(localOffset, glm::radians(tempPositions[0].eulers.y));
+            //tempPositions[i].position = tempPositions[0].position + rotatedOffsetY;
+
+            //glm::vec3 rotatedOffsetX = glm::rotateX(localOffset, glm::radians(tempPositions[0].eulers.x));
+            //tempPositions[i].position = tempPositions[0].position + rotatedOffsetX;
 
             tempPositions[i].eulers.y += speed;
 			if (tempPositions[i].eulers.y > 360.0f) tempPositions[i].eulers.y -= 360.0f;
@@ -210,10 +217,51 @@ void RoverSystem::update(
     try
     {
         std::vector<float> z = getTerrainHeights(renderComponentsHitboxTerrain[0], points);
-        float position_after_PRAWE_KOLO_PRZOD = glm::max(glm::min(transformComponents[PRAWE_KOLO_PRZOD].position.z + spring, z[0] + 0.5f), transformComponents[PRAWE_KOLO_PRZOD].position.z - spring);
-        float position_after_LEWE_KOLO_PRZOD = glm::max(glm::min(transformComponents[LEWE_KOLO_PRZOD].position.z + spring, z[1] + 0.5f), transformComponents[LEWE_KOLO_PRZOD].position.z - spring);
-        float position_after_PRAWE_KOLO_TYL = glm::max(glm::min(transformComponents[PRAWE_KOLO_TYL].position.z + spring, z[2] + 0.5f), transformComponents[PRAWE_KOLO_TYL].position.z - spring);
-        float position_after_LEWE_KOLO_TYL = glm::max(glm::min(transformComponents[LEWE_KOLO_TYL].position.z + spring, z[3] + 0.5f), transformComponents[LEWE_KOLO_TYL].position.z - spring);
+        float position_after_PRAWE_KOLO_PRZOD = glm::max(glm::min(-0.686f + spring, z[0] + 0.5f), -0.686f - spring);
+        float position_after_LEWE_KOLO_PRZOD = glm::max(glm::min(-0.686f + spring, z[1] + 0.5f), -0.686f - spring);
+        float position_after_PRAWE_KOLO_TYL = glm::max(glm::min(-0.686f + spring, z[2] + 0.5f), -0.686f - spring);
+        float position_after_LEWE_KOLO_TYL = glm::max(glm::min(-0.686f + spring, z[3] + 0.5f), -0.686f - spring);
+
+        double krotsze_PRAWE_KOLO_PRZOD = atan((transformComponents[PRAWE_KOLO_PRZOD].position.z - position_after_PRAWE_KOLO_PRZOD + 0.5f) / 1.65715);
+        double dluzsze_PRAWE_KOLO_PRZOD = atan((transformComponents[PRAWE_KOLO_PRZOD].position.z - position_after_PRAWE_KOLO_PRZOD + 0.5f)/ 2.65415);
+
+        double krotsze_LEWE_KOLO_PRZOD = atan((transformComponents[LEWE_KOLO_PRZOD].position.z - position_after_LEWE_KOLO_PRZOD + 0.5f) / 1.65715);
+        double dluzsze_LEWE_KOLO_PRZOD = atan((transformComponents[LEWE_KOLO_PRZOD].position.z - position_after_LEWE_KOLO_PRZOD + 0.5f) / 2.65415);
+
+        double krotsze_PRAWE_KOLO_TYL = atan((transformComponents[PRAWE_KOLO_TYL].position.z - position_after_PRAWE_KOLO_TYL + 0.5f) / 1.65715);
+        double dluzsze_PRAWE_KOLO_TYL = atan((transformComponents[PRAWE_KOLO_TYL].position.z - position_after_PRAWE_KOLO_TYL + 0.5f) / 2.65415);
+
+        double krotsze_LEWE_KOLO_TYL = atan((transformComponents[LEWE_KOLO_TYL].position.z - position_after_LEWE_KOLO_TYL + 0.5f) / 1.65715);
+        double dluzsze_LEWE_KOLO_TYL = atan((transformComponents[LEWE_KOLO_TYL].position.z - position_after_LEWE_KOLO_TYL + 0.5f) / 2.65415);
+
+        for (int i = 0; i <= controlledEntity; i++) {
+            if (i > 0) {
+                glm::vec3 localOffset;
+                switch (i) {
+                case PRAWE_KOLO_PRZOD:
+                    localOffset = glm::vec3(1.25f, -0.64958f, -0.686f);
+                    break;
+                case PRAWE_KOLO_TYL:
+                    localOffset = glm::vec3(-1.25f, -0.64958f, -0.686f);
+                    break;
+                case LEWE_KOLO_PRZOD:
+                    localOffset = glm::vec3(1.25f, 0.64958f, -0.686f);
+                    break;
+                case LEWE_KOLO_TYL:
+                    localOffset = glm::vec3(-1.25f, 0.64958f, -0.686f);
+                    break;
+                default:
+                    localOffset = glm::vec3(0.0f, 0.0f, 0.0f);
+                    break;
+                }
+            }
+            else {
+                std::cout << "Y" << (krotsze_PRAWE_KOLO_PRZOD + krotsze_LEWE_KOLO_PRZOD - krotsze_PRAWE_KOLO_TYL - krotsze_LEWE_KOLO_TYL) << std::endl;
+                std::cout << "X" << (dluzsze_PRAWE_KOLO_PRZOD - dluzsze_LEWE_KOLO_PRZOD + dluzsze_PRAWE_KOLO_TYL - dluzsze_LEWE_KOLO_TYL) << std::endl;
+                transformComponents[0].eulers.y = 45 * (krotsze_PRAWE_KOLO_PRZOD + krotsze_LEWE_KOLO_PRZOD - krotsze_PRAWE_KOLO_TYL - krotsze_LEWE_KOLO_TYL);
+                transformComponents[0].eulers.x = 45 * (dluzsze_PRAWE_KOLO_PRZOD - dluzsze_LEWE_KOLO_PRZOD + dluzsze_PRAWE_KOLO_TYL - dluzsze_LEWE_KOLO_TYL);
+            }
+        } 
 
         transformComponents[PRAWE_KOLO_PRZOD].position.z = position_after_PRAWE_KOLO_PRZOD;
         transformComponents[LEWE_KOLO_PRZOD].position.z = position_after_LEWE_KOLO_PRZOD;

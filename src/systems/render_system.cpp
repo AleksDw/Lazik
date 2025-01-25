@@ -29,7 +29,7 @@ void RenderSystem::update(
         glUniformMatrix4fv(
             modelLocation, 1, GL_FALSE,
             glm::value_ptr(model));
-        model = glm::rotate(model, glm::radians(transform.eulers.x), { 1.0f, 0.0f, 1.0f });
+        model = glm::rotate(model, glm::radians(transform.eulers.x), { 1.0f, 0.0f, 0.0f });
         glUniformMatrix4fv(
             modelLocation, 1, GL_FALSE,
             glm::value_ptr(model));
