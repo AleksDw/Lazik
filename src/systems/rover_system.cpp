@@ -16,7 +16,7 @@ glm::vec3 POD_LEWE_KOLO_PRZOD;
 glm::vec3 POD_LEWE_KOLO_TYL;
 
 float y_dostosuj_speed = 0;
-const float spring = 0.2f;
+const float spring = 0.3f;
 const float acceleration = 2.0f;
 const float deceleration = 5.0f;
 const float MPI = 3.14159265359;
@@ -217,10 +217,10 @@ void RoverSystem::update(
     try
     {
         std::vector<float> z = getTerrainHeights(renderComponentsHitboxTerrain[0], points);
-        float position_after_PRAWE_KOLO_PRZOD = glm::max(glm::min(-0.686f + spring, z[0] + 0.5f), -0.686f - spring);
-        float position_after_LEWE_KOLO_PRZOD = glm::max(glm::min(-0.686f + spring, z[1] + 0.5f), -0.686f - spring);
-        float position_after_PRAWE_KOLO_TYL = glm::max(glm::min(-0.686f + spring, z[2] + 0.5f), -0.686f - spring);
-        float position_after_LEWE_KOLO_TYL = glm::max(glm::min(-0.686f + spring, z[3] + 0.5f), -0.686f - spring);
+        float position_after_PRAWE_KOLO_PRZOD = z[0] + 0.5f;
+        float position_after_LEWE_KOLO_PRZOD = z[1] + 0.5f;
+        float position_after_PRAWE_KOLO_TYL = z[2] + 0.5f;
+        float position_after_LEWE_KOLO_TYL = z[3] + 0.5f;
 
         double krotsze_PRAWE_KOLO_PRZOD = atan((transformComponents[PRAWE_KOLO_PRZOD].position.z - position_after_PRAWE_KOLO_PRZOD + 0.5f) / 1.65715);
         double dluzsze_PRAWE_KOLO_PRZOD = atan((transformComponents[PRAWE_KOLO_PRZOD].position.z - position_after_PRAWE_KOLO_PRZOD + 0.5f)/ 2.65415);
@@ -233,6 +233,11 @@ void RoverSystem::update(
 
         double krotsze_LEWE_KOLO_TYL = atan((transformComponents[LEWE_KOLO_TYL].position.z - position_after_LEWE_KOLO_TYL + 0.5f) / 1.65715);
         double dluzsze_LEWE_KOLO_TYL = atan((transformComponents[LEWE_KOLO_TYL].position.z - position_after_LEWE_KOLO_TYL + 0.5f) / 2.65415);
+        
+        transformComponents[0].position.z = 0.64958f + position_after_PRAWE_KOLO_PRZOD - (position_after_PRAWE_KOLO_PRZOD - position_after_LEWE_KOLO_TYL) / 2;
+
+        transformComponents[0].eulers.y = 17 * (krotsze_PRAWE_KOLO_PRZOD + krotsze_LEWE_KOLO_PRZOD - krotsze_PRAWE_KOLO_TYL - krotsze_LEWE_KOLO_TYL);
+        transformComponents[0].eulers.x = 17 * (dluzsze_PRAWE_KOLO_PRZOD - dluzsze_LEWE_KOLO_PRZOD + dluzsze_PRAWE_KOLO_TYL - dluzsze_LEWE_KOLO_TYL);
 
         for (int i = 0; i <= controlledEntity; i++) {
             if (i > 0) {
@@ -254,19 +259,15 @@ void RoverSystem::update(
                     localOffset = glm::vec3(0.0f, 0.0f, 0.0f);
                     break;
                 }
-            }
-            else {
-                std::cout << "Y" << (krotsze_PRAWE_KOLO_PRZOD + krotsze_LEWE_KOLO_PRZOD - krotsze_PRAWE_KOLO_TYL - krotsze_LEWE_KOLO_TYL) << std::endl;
-                std::cout << "X" << (dluzsze_PRAWE_KOLO_PRZOD - dluzsze_LEWE_KOLO_PRZOD + dluzsze_PRAWE_KOLO_TYL - dluzsze_LEWE_KOLO_TYL) << std::endl;
-                transformComponents[0].eulers.y = 45 * (krotsze_PRAWE_KOLO_PRZOD + krotsze_LEWE_KOLO_PRZOD - krotsze_PRAWE_KOLO_TYL - krotsze_LEWE_KOLO_TYL);
-                transformComponents[0].eulers.x = 45 * (dluzsze_PRAWE_KOLO_PRZOD - dluzsze_LEWE_KOLO_PRZOD + dluzsze_PRAWE_KOLO_TYL - dluzsze_LEWE_KOLO_TYL);
-            }
-        } 
+                glm::vec3 rotationRadians = glm::radians(transformComponents[0].eulers);
+                glm::mat4 rotationMatrix = glm::rotate(glm::mat4(1.0f), rotationRadians.z, glm::vec3(0.0f, 0.0f, 1.0f))
+                    * glm::rotate(glm::mat4(1.0f), rotationRadians.y, glm::vec3(0.0f, 1.0f, 0.0f))
+                    * glm::rotate(glm::mat4(1.0f), rotationRadians.x, glm::vec3(1.0f, 0.0f, 0.0f));
 
-        transformComponents[PRAWE_KOLO_PRZOD].position.z = position_after_PRAWE_KOLO_PRZOD;
-        transformComponents[LEWE_KOLO_PRZOD].position.z = position_after_LEWE_KOLO_PRZOD;
-        transformComponents[PRAWE_KOLO_TYL].position.z = position_after_PRAWE_KOLO_TYL;
-        transformComponents[LEWE_KOLO_TYL].position.z = position_after_LEWE_KOLO_TYL;
+                glm::vec4 rotatedOffset = rotationMatrix * glm::vec4(localOffset, 1.0f);
+                transformComponents[i].position = transformComponents[0].position + glm::vec3(rotatedOffset);
+            }
+        }
     }
     catch (const std::exception& e)
     {
