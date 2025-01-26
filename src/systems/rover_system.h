@@ -15,7 +15,7 @@ public:
 
     void update(std::unordered_map<unsigned int, TransformComponent>& transformComponents, std::unordered_map<unsigned int, TransformHitBoxComponent>& transformComponentsHitbox, std::unordered_map<unsigned int, PhysicsComponent>& physicsComponents, std::unordered_map<unsigned int, HitBoxComponent>& hitBoxComponent, std::unordered_map<unsigned int, HitBoxComponentTerrain>& renderComponentsHitboxTerrain, float dt, unsigned int controlledEntity);
 
-    int isPointInsideCube(const glm::vec3& point, const std::vector<glm::vec3>& vertices, const glm::vec3& positionRover, const glm::vec3& positionPoint, const glm::vec3& eulersRover);
+    glm::vec3 calculateMTV(const HitBoxComponent& boxA, const HitBoxComponent& boxB, const TransformHitBoxComponent& transformA, const TransformHitBoxComponent& transformB);
 
     std::vector<float> getTerrainHeights(const HitBoxComponentTerrain& terrain, const std::array<glm::vec2, 4>& points);
 

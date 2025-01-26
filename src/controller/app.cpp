@@ -47,7 +47,23 @@ void App::set_up_glfw()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
 	
-	window = glfwCreateWindow(1280, 960, "Hello Window!", NULL, NULL);
+	GLFWmonitor* monitor = glfwGetPrimaryMonitor();
+	const GLFWvidmode* mode = glfwGetVideoMode(monitor);
+
+	char fullscreen;
+	std::cout << "Fullscreen? (y/n): ";
+	std::cin >> fullscreen;
+
+	if (fullscreen == 'y')
+	{
+		window = glfwCreateWindow(mode->width, mode->height, "Hello Window!", monitor, NULL);
+	}
+	else
+	{
+		window = glfwCreateWindow(1280, 960, "Hello Window!", NULL, NULL);
+	}
+	
+	
 	glfwMakeContextCurrent(window);
 	glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_HIDDEN);
 
@@ -82,7 +98,7 @@ void App::set_up_opengl()
 	unsigned int projLocation = glGetUniformLocation(shader, "projection");
 	glm::mat4 projection = glm::perspective(
 									// render distance
-		45.0f, 640.0f / 480.0f, 0.1f, 200.0f);
+		45.0f, static_cast<float>(w) / static_cast<float>(h), 0.1f, 200.0f);
 	glUniformMatrix4fv(projLocation, 1, GL_FALSE, glm::value_ptr(projection));
 }
 

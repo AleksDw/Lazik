@@ -7,7 +7,6 @@ float angle = 0.0f;
 float speed = 0.0f;
 float turnSpeed = 0.5f;
 float wheelAngle = 0.0f;
-bool jebna = false;
 float cd = 60;
 
 glm::vec3 POD_PRAWE_KOLO_PRZOD;
@@ -118,20 +117,22 @@ void RoverSystem::update(
     // obliczanie zmiany kata obrotu lazika
     if (speed > turnSpeed)
     {
-        if(!jebna)
-        angle += (dt * wheelAngle * turnSpeed)/30;
+        angle += (dt * wheelAngle * turnSpeed) / 30;
+    }
+    else if (abs(speed) > turnSpeed)
+    {
+        angle += (dt * wheelAngle * -turnSpeed) / 30;
     }
     else
-	{
-        if (!jebna)
-        angle += (dt * wheelAngle * speed)/30;
-	}
-    if(!jebna)
-        angle = fmod(angle, 2.0f * MPI);
-        if (angle < 0) {
-            angle += 2.0f * MPI;
-        }
-    jebna = false;
+    {
+        angle += (dt * wheelAngle * speed) / 30;
+    }
+
+    angle = fmod(angle, 2.0f * MPI);
+    if (angle < 0) {
+        angle += 2.0f * MPI;
+    }
+
     glm::vec2 direction = glm::rotate(glm::vec2(1.0f, 0.0f), angle);
     for (int i = 0; i <= controlledEntity; i++) {
         if (i > 0) {
@@ -183,28 +184,33 @@ void RoverSystem::update(
             transformComponents[i].eulers.z -= 360;
         }
     }
+    
     for (const auto& [key, hitbox] : hitBoxComponent) {
         if (key > controlledEntity) {
-        for (const auto& vertex : hitbox.vertices) {
-            if (isPointInsideCube(vertex,hitBoxComponent[0].vertices, transformComponentsHitbox[0].position, transformComponentsHitbox[key].position, transformComponentsHitbox[0].eulers) != 0) {
-                jebna = true;
+            glm::vec3 mtv = calculateMTV(
+                hitBoxComponent[0], hitbox,
+                transformComponentsHitbox[0], transformComponentsHitbox[key]
+            );
+
+            // jesli mtv nie jest zerowy to znaczy ze doszlo do kolizji
+            if (glm::length(mtv) > 0.0f) {
+                std::cout << "collision detected\n";
+
+                //lekkie odbicie
+				speed *= -0.2f;
+
+                // odpowiedź na kolizje, przesuniecie obiektu o mtv (powoduje sliding)
+                for (int i = 0; i <= controlledEntity; i++) {
+                    tempPositions[i].position += mtv;
+                }
+
             }
-        }
         }
     }
 
-    if (jebna) {
-        for (int i = 0; i <= controlledEntity; i++) {
-            physicsComponents[i].velocity = {0,0,0};
-        }
-        transformComponentsHitbox[0].eulers.z = angle * (180.0f / MPI);
-        transformComponentsHitbox[0].position = transformComponents[0].position;
-        //speed = speed * 0.7;
-    }
-    else {
-        for (int i = 0; i <= controlledEntity; i++) {
+    for (int i = 0; i <= controlledEntity; i++) {
         transformComponents[i] = tempPositions[i];
-        }
+
     }
 
     std::array<glm::vec2, 4> points = {
@@ -281,47 +287,78 @@ void RoverSystem::update(
     }
 }
 
-int RoverSystem::isPointInsideCube(const glm::vec3& point, const std::vector<glm::vec3>& vertices, const glm::vec3& positionRover, const glm::vec3& positionPoint, const glm::vec3& eulersRover) {
+// oblicza minimalny wektor przesuniecia(minimal transform vector) dla hitboxa boxA, aby nie kolidowal z boxB
+glm::vec3 RoverSystem::calculateMTV(
+    const HitBoxComponent& boxA, const HitBoxComponent& boxB,
+    const TransformHitBoxComponent& transformA, const TransformHitBoxComponent& transformB) {
 
+    glm::vec3 smallestOverlapAxis(0.0f);
+    float smallestOverlap = std::numeric_limits<float>::max();
 
-    // Create the rotation matrix for the cuboid's orientation
-    glm::mat4 rotationMatrix = glm::mat4(1.0f);
-    rotationMatrix = glm::rotate(rotationMatrix, glm::radians(eulersRover.x), glm::vec3(1, 0, 0));
-    rotationMatrix = glm::rotate(rotationMatrix, glm::radians(eulersRover.y), glm::vec3(0, 1, 0));
-    rotationMatrix = glm::rotate(rotationMatrix, glm::radians(eulersRover.z), glm::vec3(0, 0, 1));
+    // Compute rotation matrices for both hitboxes
+    glm::mat4 rotationMatrixA = glm::mat4(1.0f);
+    rotationMatrixA = glm::rotate(rotationMatrixA, glm::radians(transformA.eulers.x), glm::vec3(1, 0, 0));
+    rotationMatrixA = glm::rotate(rotationMatrixA, glm::radians(transformA.eulers.y), glm::vec3(0, 1, 0));
+    rotationMatrixA = glm::rotate(rotationMatrixA, glm::radians(transformA.eulers.z), glm::vec3(0, 0, 1));
 
-    // Transform each vertex of the cuboid based on its rotation and rover position
-    std::vector<glm::vec3> transformedVertices;
-    for (const auto& vertex : vertices) {
-        glm::vec4 transformedVertex = rotationMatrix * glm::vec4(vertex, 1.0f);
-        transformedVertices.push_back(glm::vec3(transformedVertex) + positionRover);
+    glm::mat4 rotationMatrixB = glm::mat4(1.0f);
+    rotationMatrixB = glm::rotate(rotationMatrixB, glm::radians(transformB.eulers.x), glm::vec3(1, 0, 0));
+    rotationMatrixB = glm::rotate(rotationMatrixB, glm::radians(transformB.eulers.y), glm::vec3(0, 1, 0));
+    rotationMatrixB = glm::rotate(rotationMatrixB, glm::radians(transformB.eulers.z), glm::vec3(0, 0, 1));
+
+    // Axes to test for collision
+    std::vector<glm::vec3> axes = {
+        glm::vec3(1.0f, 0.0f, 0.0f), // X-axis
+        glm::vec3(0.0f, 1.0f, 0.0f), // Y-axis
+        glm::vec3(0.0f, 0.0f, 1.0f)  // Z-axis
+    };
+
+    for (const auto& axis : axes) {
+        glm::vec3 normalizedAxis = glm::normalize(axis);
+
+        // Compute min/max projections for boxA
+        float minA = std::numeric_limits<float>::max();
+        float maxA = std::numeric_limits<float>::lowest();
+        for (size_t i = 0; i < boxA.vertexCount; ++i) {
+            // Transform vertex using rotation matrix
+            glm::vec4 rotatedVertexA = rotationMatrixA * glm::vec4(boxA.vertices[i], 1.0f);
+            glm::vec3 worldVertexA = transformA.position + glm::vec3(rotatedVertexA);
+
+            // Project onto the axis
+            float projection = glm::dot(worldVertexA, normalizedAxis);
+            minA = std::min(minA, projection);
+            maxA = std::max(maxA, projection);
+        }
+
+        // Compute min/max projections for boxB
+        float minB = std::numeric_limits<float>::max();
+        float maxB = std::numeric_limits<float>::lowest();
+        for (size_t i = 0; i < boxB.vertexCount; ++i) {
+            // Transform vertex using rotation matrix
+            glm::vec4 rotatedVertexB = rotationMatrixB * glm::vec4(boxB.vertices[i], 1.0f);
+            glm::vec3 worldVertexB = transformB.position + glm::vec3(rotatedVertexB);
+
+            // Project onto the axis
+            float projection = glm::dot(worldVertexB, normalizedAxis);
+            minB = std::min(minB, projection);
+            maxB = std::max(maxB, projection);
+        }
+
+        // Check for overlap on this axis
+        float overlap = std::min(maxA, maxB) - std::max(minA, minB);
+        if (overlap < 0) {
+            // No collision
+            return glm::vec3(0.0f);
+        }
+
+        // Track smallest overlap
+        if (overlap < smallestOverlap) {
+            smallestOverlap = overlap;
+            smallestOverlapAxis = normalizedAxis * ((minA < minB) ? -1.0f : 1.0f);
+        }
     }
 
-    // Calculate the bounds of the cuboid (min and max for each axis)
-    glm::vec3 min, max;
-
-    min.x = std::min({ transformedVertices[0].x, transformedVertices[1].x, transformedVertices[2].x, transformedVertices[3].x,
-                       transformedVertices[4].x, transformedVertices[5].x, transformedVertices[6].x, transformedVertices[7].x });
-    max.x = std::max({ transformedVertices[0].x, transformedVertices[1].x, transformedVertices[2].x, transformedVertices[3].x,
-                       transformedVertices[4].x, transformedVertices[5].x, transformedVertices[6].x, transformedVertices[7].x });
-
-    min.y = std::min({ transformedVertices[0].y, transformedVertices[1].y, transformedVertices[2].y, transformedVertices[3].y,
-                       transformedVertices[4].y, transformedVertices[5].y, transformedVertices[6].y, transformedVertices[7].y });
-    max.y = std::max({ transformedVertices[0].y, transformedVertices[1].y, transformedVertices[2].y, transformedVertices[3].y,
-                       transformedVertices[4].y, transformedVertices[5].y, transformedVertices[6].y, transformedVertices[7].y });
-
-    min.z = std::min({ transformedVertices[0].z, transformedVertices[1].z, transformedVertices[2].z, transformedVertices[3].z,
-                       transformedVertices[4].z, transformedVertices[5].z, transformedVertices[6].z, transformedVertices[7].z });
-    max.z = std::max({ transformedVertices[0].z, transformedVertices[1].z, transformedVertices[2].z, transformedVertices[3].z,
-                       transformedVertices[4].z, transformedVertices[5].z, transformedVertices[6].z, transformedVertices[7].z });
-
-    // Check if the point is inside the cuboid
-    if (point.x + positionPoint.x >= min.x && point.x + positionPoint.x <= max.x &&
-        point.y + positionPoint.y >= min.y && point.y + positionPoint.y <= max.y &&
-        point.z + positionPoint.z >= min.z && point.z + positionPoint.z <= max.z) {
-        return 1; // Point is inside the cuboid
-    }
-    return 0; // Point is outside the cuboid
+    return smallestOverlapAxis * smallestOverlap;
 }
 
 std::vector<float> RoverSystem::getTerrainHeights(const HitBoxComponentTerrain& terrain,
