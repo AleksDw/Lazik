@@ -158,12 +158,6 @@ void RoverSystem::update(
             tempPositions[i].position = tempPositions[0].position + rotatedOffsetZ;
             physicsComponents[i].velocity = physicsComponents[0].velocity;
 
-            //glm::vec3 rotatedOffsetY = glm::rotateY(localOffset, glm::radians(tempPositions[0].eulers.y));
-            //tempPositions[i].position = tempPositions[0].position + rotatedOffsetY;
-
-            //glm::vec3 rotatedOffsetX = glm::rotateX(localOffset, glm::radians(tempPositions[0].eulers.x));
-            //tempPositions[i].position = tempPositions[0].position + rotatedOffsetX;
-
             tempPositions[i].eulers.y += speed;
 			if (tempPositions[i].eulers.y > 360.0f) tempPositions[i].eulers.y -= 360.0f;
         }
@@ -228,22 +222,26 @@ void RoverSystem::update(
         float position_after_PRAWE_KOLO_TYL = z[2] + 0.5f;
         float position_after_LEWE_KOLO_TYL = z[3] + 0.5f;
 
-        double krotsze_PRAWE_KOLO_PRZOD = atan((transformComponents[PRAWE_KOLO_PRZOD].position.z - position_after_PRAWE_KOLO_PRZOD + 0.5f) / 1.65715);
-        double dluzsze_PRAWE_KOLO_PRZOD = atan((transformComponents[PRAWE_KOLO_PRZOD].position.z - position_after_PRAWE_KOLO_PRZOD + 0.5f)/ 2.65415);
+        double krotsze_PRAWE_KOLO_PRZOD = atan((transformComponents[PRAWE_KOLO_PRZOD].position.z - position_after_PRAWE_KOLO_PRZOD + 0.5f) / 1.15715);
+        double dluzsze_PRAWE_KOLO_PRZOD = atan((transformComponents[PRAWE_KOLO_PRZOD].position.z - position_after_PRAWE_KOLO_PRZOD + 0.5f) / 2.65415);
 
-        double krotsze_LEWE_KOLO_PRZOD = atan((transformComponents[LEWE_KOLO_PRZOD].position.z - position_after_LEWE_KOLO_PRZOD + 0.5f) / 1.65715);
+        double krotsze_LEWE_KOLO_PRZOD = atan((transformComponents[LEWE_KOLO_PRZOD].position.z - position_after_LEWE_KOLO_PRZOD + 0.5f) / 1.15715);
         double dluzsze_LEWE_KOLO_PRZOD = atan((transformComponents[LEWE_KOLO_PRZOD].position.z - position_after_LEWE_KOLO_PRZOD + 0.5f) / 2.65415);
 
-        double krotsze_PRAWE_KOLO_TYL = atan((transformComponents[PRAWE_KOLO_TYL].position.z - position_after_PRAWE_KOLO_TYL + 0.5f) / 1.65715);
+        double krotsze_PRAWE_KOLO_TYL = atan((transformComponents[PRAWE_KOLO_TYL].position.z - position_after_PRAWE_KOLO_TYL + 0.5f) / 1.15715);
         double dluzsze_PRAWE_KOLO_TYL = atan((transformComponents[PRAWE_KOLO_TYL].position.z - position_after_PRAWE_KOLO_TYL + 0.5f) / 2.65415);
 
-        double krotsze_LEWE_KOLO_TYL = atan((transformComponents[LEWE_KOLO_TYL].position.z - position_after_LEWE_KOLO_TYL + 0.5f) / 1.65715);
+        double krotsze_LEWE_KOLO_TYL = atan((transformComponents[LEWE_KOLO_TYL].position.z - position_after_LEWE_KOLO_TYL + 0.5f) / 1.15715);
         double dluzsze_LEWE_KOLO_TYL = atan((transformComponents[LEWE_KOLO_TYL].position.z - position_after_LEWE_KOLO_TYL + 0.5f) / 2.65415);
-        
-        transformComponents[0].position.z = 0.64958f + position_after_PRAWE_KOLO_PRZOD - (position_after_PRAWE_KOLO_PRZOD - position_after_LEWE_KOLO_TYL) / 2;
 
-        transformComponents[0].eulers.y = 17 * (krotsze_PRAWE_KOLO_PRZOD + krotsze_LEWE_KOLO_PRZOD - krotsze_PRAWE_KOLO_TYL - krotsze_LEWE_KOLO_TYL);
-        transformComponents[0].eulers.x = 17 * (dluzsze_PRAWE_KOLO_PRZOD - dluzsze_LEWE_KOLO_PRZOD + dluzsze_PRAWE_KOLO_TYL - dluzsze_LEWE_KOLO_TYL);
+        transformComponents[0].position.z = glm::max((0.64958f + position_after_PRAWE_KOLO_PRZOD - (position_after_PRAWE_KOLO_PRZOD - position_after_LEWE_KOLO_TYL) / 2), (0.64958f + position_after_LEWE_KOLO_PRZOD - (position_after_LEWE_KOLO_PRZOD - position_after_PRAWE_KOLO_TYL) / 2));
+
+        double obracanie_na_y = 17 * (krotsze_PRAWE_KOLO_PRZOD + krotsze_LEWE_KOLO_PRZOD - krotsze_PRAWE_KOLO_TYL - krotsze_LEWE_KOLO_TYL);
+        double obracanie_na_x = 39 * (dluzsze_PRAWE_KOLO_PRZOD - dluzsze_LEWE_KOLO_PRZOD + dluzsze_PRAWE_KOLO_TYL - dluzsze_LEWE_KOLO_TYL);
+
+
+        transformComponents[0].eulers.y = obracanie_na_y;
+        transformComponents[0].eulers.x = obracanie_na_x;
 
         for (int i = 0; i <= controlledEntity; i++) {
             if (i > 0) {
@@ -272,8 +270,13 @@ void RoverSystem::update(
 
                 glm::vec4 rotatedOffset = rotationMatrix * glm::vec4(localOffset, 1.0f);
                 transformComponents[i].position = transformComponents[0].position + glm::vec3(rotatedOffset);
+                //transformComponents[i].eulers.x = obracanie_na_x;
             }
         }
+        transformComponents[PRAWE_KOLO_PRZOD].position.z = position_after_PRAWE_KOLO_PRZOD;
+        transformComponents[LEWE_KOLO_PRZOD].position.z = position_after_LEWE_KOLO_PRZOD;
+        transformComponents[PRAWE_KOLO_TYL].position.z = position_after_PRAWE_KOLO_TYL;
+        transformComponents[LEWE_KOLO_TYL].position.z = position_after_LEWE_KOLO_TYL;
     }
     catch (const std::exception& e)
     {
