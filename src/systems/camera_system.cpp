@@ -1,5 +1,6 @@
 #include "camera_system.h"
-
+#include <glm/gtx/rotate_vector.hpp>
+int numer_kamery = 0;
 CameraSystem::CameraSystem(unsigned int shader, GLFWwindow* window) 
 {
     this->window = window;
@@ -53,6 +54,18 @@ bool CameraSystem::update(
     {
         dPos.y += 1.0f;
     }
+    if (glfwGetKey(window, GLFW_KEY_1) == GLFW_PRESS)
+    {
+        numer_kamery = 1;
+    }
+    if (glfwGetKey(window, GLFW_KEY_0) == GLFW_PRESS)
+    {
+        numer_kamery = 0;
+    }
+    if (glfwGetKey(window, GLFW_KEY_2) == GLFW_PRESS)
+    {
+        numer_kamery = 2;
+    }
     if (glm::length(dPos) > 0.1f) 
     {
         dPos = glm::normalize(dPos);
@@ -73,11 +86,18 @@ bool CameraSystem::update(
     glfwPollEvents();
 
     dEulers.z = -0.1f * static_cast<float>(mouse_x - 320.0);
-    dEulers.y = -0.1f * static_cast<float>(mouse_y - 240.0);
+    if (numer_kamery == 0)
+    {
+	    dEulers.y = -0.1f * static_cast<float>(mouse_y - 240.0);
 
-    eulers.y = fminf(89.0f, fmaxf(-89.0f, eulers.y + dEulers.y));
+		eulers.y = fminf(89.0f, fmaxf(-89.0f, eulers.y + dEulers.y));
+        eulers.z += dEulers.z;
+    }
+    if (numer_kamery == 2)
+    {
+        eulers.z += dEulers.z;
+    }
 
-    eulers.z += dEulers.z;
     if (eulers.z > 360) 
     {
         eulers.z -= 360;
@@ -85,6 +105,26 @@ bool CameraSystem::update(
     else if (eulers.z < 0) 
     {
         eulers.z += 360;
+    }
+    if (numer_kamery == 1)
+    {
+    	transformComponents[cameraID].position.x = transformComponents[0].position.x;
+    	transformComponents[cameraID].position.y = transformComponents[0].position.y;
+    	transformComponents[cameraID].position.z = transformComponents[0].position.z;
+    	eulers.z = transformComponents[0].eulers.z;
+    	glm::vec3 localOffset = glm::vec3(-7, 0, 4);
+    	glm::vec3 rotatedOffset = glm::rotateZ(localOffset, glm::radians(transformComponents[cameraID].eulers.z));
+    	transformComponents[cameraID].position = transformComponents[cameraID].position + rotatedOffset;
+    }
+    if (numer_kamery == 2){
+        transformComponents[cameraID].position.x = transformComponents[0].position.x;
+        transformComponents[cameraID].position.y = transformComponents[0].position.y;
+        transformComponents[cameraID].position.z = transformComponents[0].position.z;
+        glm::vec3 localOffset = glm::vec3(-7, 0, 4);
+        glm::vec3 rotatedOffset = glm::rotateZ(localOffset, glm::radians(transformComponents[cameraID].eulers.z));
+        transformComponents[cameraID].position = transformComponents[cameraID].position + rotatedOffset;
+
+
     }
 
     return false;
