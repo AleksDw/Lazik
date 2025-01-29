@@ -1,5 +1,8 @@
 #include "app.h"
 
+#include <chrono>
+#include <thread>
+
 App::App() 
 {
     set_up_glfw();
@@ -35,6 +38,8 @@ void App::run()
 			break;
 		}
 		renderSystem->update(transformComponents, transformComponentsHitbox, renderComponents);
+		std::this_thread::sleep_for(std::chrono::nanoseconds(500));
+
 	}
 }
 
