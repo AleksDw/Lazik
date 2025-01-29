@@ -23,9 +23,12 @@ App::~App()
 void App::run() 
 {
 
+	const auto frame_duration = std::chrono::milliseconds(16);
+
     while (!glfwWindowShouldClose(window)) 
 	{
 
+		auto frame_start = std::chrono::high_resolution_clock::now();
         motionSystem->update(
             transformComponents, physicsComponents, 16.67f/1000.0f);
 		roverSystem->update(
@@ -38,7 +41,14 @@ void App::run()
 			break;
 		}
 		renderSystem->update(transformComponents, transformComponentsHitbox, renderComponents);
-		std::this_thread::sleep_for(std::chrono::nanoseconds(500));
+
+		auto frame_end = std::chrono::high_resolution_clock::now();
+		auto frame_time = std::chrono::duration_cast<std::chrono::milliseconds>(frame_end - frame_start);
+
+		if (frame_duration > frame_time)
+		{
+			std::this_thread::sleep_for(frame_duration - frame_time);
+		}
 
 	}
 }
