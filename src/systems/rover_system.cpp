@@ -41,6 +41,12 @@ void RoverSystem::update(
     std::unordered_map<unsigned int, HitBoxComponentTerrain>& renderComponentsHitboxTerrain,
     float dt, unsigned int controlledEntity)
 {
+    if (glfwGetKey(window, GLFW_KEY_R) == GLFW_PRESS) {
+        for (int i = 0; i <= controlledEntity; i++) {
+            transformComponents[i].position = { 0.0f,0.0f,0.0f };
+            transformComponentsHitbox[0].position = { 0.0f,0.0f,0.0f };
+        }
+    }
     for (int i = 0; i <= controlledEntity; i++) {
         tempPositions[i] = transformComponents[i];
     }
@@ -65,6 +71,7 @@ void RoverSystem::update(
         wheelAngle--;
         if (wheelAngle < -MAX_WHEEL_ANGLE) wheelAngle = -MAX_WHEEL_ANGLE;
     }
+    
     if (glfwGetKey(window, GLFW_KEY_K) == GLFW_PRESS && cd >= 60) {
         for (int i = 0; i <= 5; i++) {
             if (!bullet_list[i]) {
@@ -76,6 +83,7 @@ void RoverSystem::update(
                 transformComponents[controlledEntity + i + 1].eulers.z = transformComponents[controlledEntity].eulers.z;
                 glm::vec2 direction = glm::rotate(glm::vec2(1.0f, 0.0f), angle);
                 physicsComponents[controlledEntity + i + 1].velocity = glm::vec3(direction.x, direction.y, 0.0f) * bullet_speed + glm::vec3(direction.x, direction.y, 0.0f) * speed;
+                physicsComponents[controlledEntity + i + 1].velocity.x += 5;
                 physicsComponents[controlledEntity + i + 1].velocity.z = 2;
                 cd = 0;
                 break;
@@ -188,7 +196,6 @@ void RoverSystem::update(
 
             // jesli mtv nie jest zerowy to znaczy ze doszlo do kolizji
             if (glm::length(mtv) > 0.0f) {
-                std::cout << "collision detected\n";
 
                 //lekkie odbicie
 				speed *= -0.2f;

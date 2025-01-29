@@ -24,8 +24,18 @@ public:
 
     unsigned int make_bum(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
 
+    unsigned int make_bum2(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
+
+    unsigned int make_bum3(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
+
     unsigned int make_tree1(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
     unsigned int make_tree2(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
+
+    unsigned int make_rockWalls(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
+
+    unsigned int make_rocks1(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
+
+    unsigned int make_rocks2(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
 
     unsigned int make_rover(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity);
 

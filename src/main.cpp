@@ -21,13 +21,26 @@ int main()
 	app->roverID = roverEntity;
 	//factory->make_cube({ 3.0f, 0.0f, 0.25f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
 	for (int i = 0; i < 6; i++) {
-		factory->make_bullet({ 0.0f, 8.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+		factory->make_bullet({ 0.0f, -30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
 	}
 
 	factory->make_terrain({ 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
-	//factory->make_bum({ 20.0f, 0.0f, -1.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
-	factory->make_tree1({ 10.0f, 0.0f, -1.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
-	factory->make_tree2({ -5.0f, 0.0f, -1.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
+	factory->make_rockWalls({ 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, {0.0f,0.0f,0.0f});
+	factory->make_bum({ 0.0f, 38.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
+	factory->make_bum({ 0.0f, -38.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
+	factory->make_bum2({ 38.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
+	factory->make_bum2({ -38.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
+
+	factory->make_tree1({ 10.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+	factory->make_tree2({ -5.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+
+	factory->make_rocks1({ -15.0f, 0.0f,0.5f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+	factory->make_rocks2({ -25.0f, -8.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+	factory->make_rocks1({ 15.0f, 30.0f, -0.2f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+	factory->make_rocks2({ 25.0f, 0.0f, -0.7f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+	factory->make_rocks1({ -25.0f, 15.0f, 0.7f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+	factory->make_rocks2({ -25.0f, -25.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
+
 
 	unsigned int cameraEntity = factory->make_camera(
 		{0.0f, 0.0f, 1.0f}, {0.0f, 0.0f,0.0f});
