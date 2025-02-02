@@ -19,7 +19,6 @@ int main()
 	
 	unsigned int roverEntity = factory->make_rover({ 5.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, {0.0f, 0.0f, 0.0f});
 	app->roverID = roverEntity;
-	//factory->make_cube({ 3.0f, 0.0f, 0.25f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 1.0f });
 	for (int i = 0; i < 6; i++) {
 		factory->make_bullet({ 0.0f, -30.0f, 0.0f }, { 0.0f, 0.0f, 0.0f }, { 0.0f, 0.0f, 0.0f });
 	}

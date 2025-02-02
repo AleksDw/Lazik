@@ -36,50 +36,6 @@ unsigned int Factory::make_camera(glm::vec3 position, glm::vec3 eulers) {
     return entities_made++;
 }
 
-void Factory::make_cube(glm::vec3 position, glm::vec3 eulers,
-    glm::vec3 eulerVelocity) {
-
-    TransformComponent transform;
-    transform.position = position;
-    transform.eulers = eulers;
-    transformComponents[entities_made] = transform;
-
-    PhysicsComponent physics;
-    physics.velocity = { 0.0f, 0.0f, 0.0f };
-    physics.eulerVelocity = eulerVelocity;
-    physicsComponents[entities_made] = physics;
-
-    glm::mat4 preTransform = glm::mat4(1.0f);
-    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-
-    RenderComponent render = make_obj_mesh("../../../models/Rover_test.obj", preTransform);
-    render.material = make_texture("../../../img/metal_metalness.jpg");
-    renderComponents[entities_made++] = render;
-}
-//unsigned int Factory::make_ramp(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity)
-//{
-//    TransformComponent transform;
-//    TransformComponent hitbox;
-//    hitbox.position = position;
-//    hitbox.eulers = eulers;
-//    transform.position = position;
-//    transform.eulers = eulers;
-//    transformComponents[entities_made] = transform;
-//    transformComponentsHitbox[entities_made] = hitbox;
-//
-//    glm::mat4 preTransform = glm::mat4(1.0f);
-//    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-//    preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-//
-//    RenderComponent render = make_obj_mesh("../../../models/Rover_body.obj", preTransform);
-//    RenderComponent renderhitbox = make_obj_mesh("../../../models/hitbox.obj", preTransform);
-//    render.material = make_texture("../../../img/Body_BaseColor.png");
-//    renderhitbox.material = make_texture("../../../img/Body_BaseColor.png");
-//    renderComponents[entities_made] = render;
-//    renderComponentsHitbox[entities_made] = renderhitbox;
-//    entities_made++;
-//}
 
 unsigned int Factory::make_bum(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity)
 {
@@ -121,31 +77,7 @@ unsigned int Factory::make_bum2(glm::vec3 position, glm::vec3 eulers, glm::vec3 
 
     return entities_made++;
 }
-unsigned int Factory::make_bum3(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity)
-{
-    TransformComponent transform;
-    TransformHitBoxComponent hitbox;
-    hitbox.position = position;
-    hitbox.eulers = eulers;
-    transform.position = position;
-    transform.eulers = eulers;
-    transformComponents[entities_made] = transform;
-    transformComponentsHitbox[entities_made] = hitbox;
 
-    glm::mat4 preTransform = glm::mat4(1.0f);
-    preTransform = glm::rotate(preTransform, glm::radians(90.0f), glm::vec3(1.0f, 0.0f, 0.0f));
-    preTransform = glm::rotate(preTransform, glm::radians(-90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
-
-    RenderComponent render = make_obj_mesh("../../../models/small_rock_group_col.obj", preTransform);
-
-    HitBoxComponent renderhitbox = make_obj_coliderbox("../../../models/small_rock_group_col.obj", preTransform);
-
-    render.material = make_texture("../../../img/tree_diffuse.jpg");
-    renderComponents[entities_made] = render;
-    renderComponentsHitbox[entities_made] = renderhitbox;
-
-    return entities_made++;
-}
 unsigned int Factory::make_tree1(glm::vec3 position, glm::vec3 eulers, glm::vec3 eulerVelocity)
 {
     TransformComponent transform;
